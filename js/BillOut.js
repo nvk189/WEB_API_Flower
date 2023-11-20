@@ -15,6 +15,10 @@ app.controller("BillOut", function ($scope, $http) {
           $scope.Ban = response.data;
           console.log($scope.Ban)
           updatePagination($scope.Ban)
+          countOrdersToday($scope.Ban)
+
+
+
         });
       };
       $scope.GetBan();
@@ -202,7 +206,7 @@ $scope.load = function(selectedItem){
        .then(function(response) {
          // $scope.createBan = response.data;
          // console.log($scope.createBan)
-         
+
          alert('xóa thành công')
          $scope.GetBan();
         
@@ -213,9 +217,11 @@ $scope.load = function(selectedItem){
     }
 
   }
-         // phân trang
-
-
+  
+  
+  
+  
+  // phân trang
    function updatePagination(maloaisp) {
     $scope.currentPage = 1;
     $scope.itemsPerPage = 8;
@@ -237,4 +243,24 @@ $scope.load = function(selectedItem){
     };
     $scope.getData();
   }
+
+  // thống kê hóa đơn hiên jtiaj 
+  function countOrdersToday (a) {
+    $scope.count=0
+    // Lấy ngày hiện tại
+    var today = new Date().toISOString().split('T')[0];
+
+    // Sử dụng filter để lọc các đơn hàng có ngày đặt hàng là ngày hiện tại
+    var ordersToday = a.filter(function(order) {
+        return order.ngayDatHang.split('T')[0] === today;
+    });
+
+    // Đếm số lượng đơn hàng
+    $scope.count = ordersToday.length;
+
+    // In kết quả vào console (bạn có thể sử dụng giá trị này tùy ý)
+    console.log("Số đơn hàng có ngày đặt hàng là ngày hiện tại: " + $scope.count);
+
+  
+};
 })

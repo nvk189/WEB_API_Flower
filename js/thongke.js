@@ -81,4 +81,9 @@ app.controller("thongke", function ($scope, $http) {
         $scope.getData();
       }
 
+
+
+      // thống kê ngày hiện tại của hóa đơn bán 
+     
+    
 })

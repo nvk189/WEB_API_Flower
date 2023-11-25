@@ -1,5 +1,5 @@
 
-// var app = angular.module("AppBanHoa", []);
+
 app
 
 // chi tiết sản phẩm
@@ -43,7 +43,7 @@ app.controller("Detail", function ($scope, $http, ) {
   };
   $scope.Detail();
 
-  // var a =1
+
   
 
 
@@ -72,10 +72,12 @@ app.controller("Detail", function ($scope, $http, ) {
 
   // thêm sản phẩm vào giỏ hàng  của tường khách hàng
 $scope.sum=0
+
+
 var customerId= 0;
 customerId = JSON.parse(localStorage.getItem('newcart'))[0].maTaiKhoan;
 $scope.listCart = function () {
- $scope.sum++
+
   var data = {
       maSanPham: JSON.parse(localStorage.getItem('sanpham')).maSanPham,
       tenSanPham: JSON.parse(localStorage.getItem('sanpham')).tenSanPham,
@@ -122,7 +124,7 @@ function updateCart(customerId, data) {
       cartItems.push(data);
   }
     
-    alert('Thêm thành công');
+    // alert('Thêm thành công');
     localStorage.setItem('cartItem_' + customerId, JSON.stringify(cartItems));
     $scope.list = cartItems;
       alert('Thêm thành công');
@@ -143,7 +145,10 @@ function updateCart(customerId, data) {
   if (localStorage.getItem('cartItem_' + customerId)) {
     $scope.list = [];
     $scope.list = JSON.parse(localStorage.getItem('cartItem_' + customerId));
-    console.log($scope.list)
+    // console.log($scope.list)
+    var cartItems = localStorage.getItem('cartItem_' + customerId);
+    var parsedCartItems = JSON.parse(cartItems) || [];
+    $scope.sum = parsedCartItems.length;
   
   }
 

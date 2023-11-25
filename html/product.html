@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/bass.css">
+    <link rel="stylesheet" href="/assets/css/grid.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/product.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    
+</head>
+<body  ng-app="AppBanHoa" ng-controller="ListCtrl" >
+    <!-- header -->
+    <!-- header-top -->
+    <nav id="top">
+        <div class="container grid wide  ">
+            <div class="nav float-start">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <span>
+
+                            HOTLINE:
+                        </span>
+                        <a href="tel:1900633045">1900 633 045</a>
+                        |
+                        <a href="tel:0865 160 360">0865 160 360</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav float-end">
+                <ul class="list-inline">
+                    <li class="list-inline-item list-item-login">
+                         <div class="dropdown">
+                            <a href="" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
+                            <ul class="menu-login">
+                                <li><a href="" class="dropdown-item">Đăng ký</a></li>
+                                <li><a href="" class="dropdown-item">Đăng nhập</a></li>
+                             </ul>
+                        </div>
+                    </li>
+                    <li class="list-inline-item"><a href="./Cart.html" title="Giỏ hàng"><i class="fa-solid fa-bag-shopping"></i> <span class="d-none d-md-inline">Giỏ hàng</span></a></li>
+                    <li class="list-inline-item"><a href="./Bill.html" title="Thanh toán"><i class="fa-solid fa-share"></i> <span class="d-none d-md-inline">Thanh toán</span></a></li>
+                    </ul>
+            </div>
+        </div>
+   </nav>
+
+    <!-- header-logo -->
+    <div class="header-logo">
+        <div class="header-logo__container">
+            <div class="header-logo__list">
+                <div class="logo-list__one">
+                    <div class="logo-list-icon">
+                        <a href="" class="icon__search icon__search-face">
+
+                            <i class="fa-brands fa-facebook" style="color: #3b5998;"></i>
+                            
+                        </a>
+                        <a href="" class="icon__search icon__search-twiter">
+
+                            <i class="fa-brands fa-twitter" style="color: #38A1F3;"></i>
+                        </a>
+                        <a href="" class="icon__search icon__search-ins">
+
+                            <i class="fa-brands fa-instagram" style="color: #cd486b;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="logo-list__two">
+                    <a class="link-logo__two" href="/html/Home.html" style="display: inline-block;">
+                        <img class="logo" src="/assets/img/Logo.webp" alt="Logo cửa hàng" >
+                    </a>
+                </div>
+                
+                <div class="logo-list__three" >
+                    <div class="logo-list-right" >
+
+                        <div class="list-three__left"  >
+                          <input  class="text-search" type="text" placeholder="Tìm kiếm">
+                          <a href="" style="display: inline-block;">
+                            <i class="fa-solid fa-magnifying-glass icon-search"></i>
+                        </a>
+                          
+                        </div>
+                        <div class="shopping-cart">
+
+                            <a href="" class="link-icon-shopping" style="display: inline-block;">
+    
+                                <i class="fa-solid fa-bag-shopping icon-shopping" ></i>
+                            </a>
+                            <div class="amount-shop">
+                                <span class="about-shop">
+                                    0
+                                </span>
+                            </div>
+                            <div class="list-cart" >
+
+                                <ul class="" >
+                                    <li class="name-cart">
+                                        Giỏ hàng của bạn đang trống!
+                                    </li>
+                                 </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main -->
+    <main  >
+
+        <div class="header-list">
+            <div class="list-item">
+                <div class="item-check">
+                    <ul class="list-item__check">
+                        <li class="item-brithday  ">
+                            <a href=" /html/product.html"  class="item-brithday-link">
+                                HOA SINH NHẬT
+                            </a>
+    
+                            <ul class="list-brithday-1 list-brithday">
+                                
+                            </ul>
+                        </li>
+    
+                        <li class="item-brithday">
+                            <a href=" /html/product.html"  class="item-brithday-link">
+                                HOA KHAI TRƯƠNG
+                            </a>
+     
+                            <ul class="  list-brithday list-brithday-2 ">
+                             
+                            </ul>
+                         </li>
+
+                         <li class="item-brithday">
+                            <a href=" /html/product.html" class="item-brithday-link">
+                            CHỦ ĐỀ
+                            </a>
+     
+                            <ul class="list-brithday list-brithday-3">
+                             
+                            </ul>
+                         </li>
+    
+                         <li class="item-brithday">
+                            <a href=" /html/product.html"  class="item-brithday-link">
+                            THIẾT KẾ
+                            </a>
+     
+                             <ul class="list-brithday list-brithday-4">
+                            
+                           
+                            </ul>
+                         </li>
+                        
+                         <li class="item-brithday">
+                            <a href=" /html/product.html"  class="item-brithday-link">
+                            HOA TƯƠI
+                            </a>
+     
+                            <ul class="list-brithday list-brithday-5">
+                            
+                            </ul>
+                         </li>
+    
+                         <li class="item-brithday">
+                            <a href=" /html/product.html"  class="item-brithday-link">
+                            QUÀ TẶNG
+                            </a>
+     
+                             <ul class="list-brithday list-brithday-6">
+                            </ul>
+                         </li>
+    
+                         <li class="item-brithday">
+                            <a href=" /html/product.html"  class="item-brithday-link">
+                            HOA TƯƠI GIẢM GIÁ
+                            </a>
+                         </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="header-notice">
+            <p class="header-notice__text">ĐẶT HOA ONLINE - GIAO MIỄN PHÍ TP HCM &amp; HÀ NỘI - GỌI NGAY 1900 633 045 HOẶC 0865 160 360</p>
+        </div>
+
+
+    <!-- danh sách  sản phẩm -->
+        <div class="list-product">
+            <div class="grid wide product-list-item" >
+                <h1>
+
+                    <span   class="text-product">Danh sách sản phẩm</span>
+                </h1>
+                <div class="menu-list-product" style="margin-bottom: 50px;">
+                    <div class=" icon-menu-list">
+                        <i class="fa-solid fa-table-cells"></i>
+                    </div>
+                    <div class="page-list">
+                        
+                        <div class="number-text">
+                            <label for="">Sắp xếp theo</label>
+                            <select id="input-sort" class="form-select" >
+                                
+                                <option  value="">Giá (Thấp&gt; Cao)</option>
+                                <option value="">Giá (Cao&gt; Thấp)</option>
+                               
+                            </select>
+                        </div>
+
+                        
+                
+                        
+                    </div>
+
+                    
+
+                </div>
+                <div class="flower grid wide " >
+                    <div class="flower-list ">
+                        <!-- <h2 class="text-item ">đang giảm giá</h2> -->
+                          
+                        <div class="flower-item  row grid wide" >
+                            <div  ng-repeat=" x in listsearch " class="flower-items  col l-3 m-4 c-6">
+
+                                <div  class="img-flower">
+                                    <img class="img" ng-src="{{x.anhDaiDien}}" alt="{{x.tenSanPham}}">
+                                </div>
+                                <div class="text-flower">
+                                    <p class="name-flower">{{x.tenSanPham}}</p>
+                                    <span class="price-sale">{{x.giaGiam}} VND</span>
+                                    <span class="price">{{x.gia}} VND</span>
+                                 </div>
+                                <div class="sub-item" >
+                                    <a href="/html/detail.html?id={{x.maSanPham}}">
+                                      Đặt hàng
+                                    </a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                            
+                    </div>
+        
+                </div>
+                <div class="box-right">
+                    <!-- <p>trang số {{pages}}</p> -->
+                    <button style="margin: 0 3px; border-color: #ccc; padding: 5px 2px; background-color: #e91e63;" ng-click="prevPage()"><i class="fas fa-angle-left"></i></button>
+                    <button style="margin: 0 3px; border-color: #ccc; padding: 5px 10px; background-color: #e91e63;" style="margin: 0 2px;" ng-repeat="page in pages" ng-click="setPage(page)">{{ page }} </button>
+                    <button style="margin: 0 3px; border-color: #ccc; padding: 5px 2px; background-color: #e91e63;" ng-click="nextPage()"><i class="fas fa-angle-right"></i></button>
+                </div>
+            </div>
+        </div>
+    
+    </main>
+       
+    
+    <!-- footer -->
+    <footer >
+        <!-- footer-top -->
+        <div class="footer-top grid wide" style="display: flex;">
+            <div  class="l-3  footer-top-item ">
+                <a href="./Home.html">
+
+                    <img class=" img-logo-footer" src="https://8384f55340.vws.vegacdn.vn/image/catalog/common/shop-hoa-tuoi-flowercorner-logo.png.webp"  data-loaded="true">
+                </a>
+                <span class="Hotline-footer">
+
+                    Hotline: 1900 633 045 - 0865 160 360 Email: sales@flowercorner.vn
+                </span> 
+                <div class="link-footer">
+                    <div class="link-qr">
+                        <img class="img-qr" src="https://8384f55340.vws.vegacdn.vn/image/catalog/common/app/qr.png.webp" alt="">
+                    </div>
+                    <div class="link-app">
+                        <span style="display: inline-block;">Tải ứng dụng ngay!</span>
+                        <div class="app">
+                            <a href="">
+                                <img class="appstore" src="https://8384f55340.vws.vegacdn.vn/image/catalog/common/app/appstore.png.webp" alt="">
+                            </a>
+                            <a href="">
+                                <img  class="google" src="https://8384f55340.vws.vegacdn.vn/image/catalog/common/app/gplay.png.webp" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                </div> 
+
+                <div class="confirm">
+                    <img src="https://8384f55340.vws.vegacdn.vn/image/catalog/common/app/logoSaleNoti.png.webp" alt="">
+                </div>
+            </div>
+            <div class="l-3   footer-top-item ">
+                <span class="Customer-care-h1">
+
+                    CHĂM SÓC KHÁCH HÀNG
+                </span>
+                <ul class="Customer-care">
+                    <li><a href="">
+                    </a></li>
+                    <li><a href="">
+                        Giới Thiệu
+                    </a></li>
+                    <li><a href="">
+                        Liên Hệ
+                    </a></li>
+                    <li><a href="">
+                        Chính Sách Vận Chuyển
+                    </a></li>
+                    <li><a href="">
+                        Câu Hỏi Thường Gặp
+                    </a></li>
+                    <li><a href="">
+                        Hình Thức Thanh Toán
+                    </a></li>
+                    <li><a href="">
+                        Bảo Mật Thông Tin
+                    </a></li>
+                    <li><a href="">
+                        Chính Sách Hoàn Tiền
+                    </a></li>
+                    <li><a href="">
+                        Xử Lý Khiếu Nại
+                    </a></li>
+                    <li><a href="">
+                        Tại Sao Nên Chọn FlowerCorner.vn
+                    </a></li>
+                    <li><a href="">
+                        Blog
+                    </a></li>
+                </ul>
+            </div>
+            <div class="l-3 footer-top-item ">
+                <span class="Customer-care-h1">
+                        theo dõi
+                </span>
+                <br>
+                <br>
+                <ul class="Customer-care Customer-care-internet">
+                    <li><a href="">
+                        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                        <span> Facebook</span>
+                    </a></li>
+                    <li><a href="">
+                        <i class="fa-brands fa-twitter-square" aria-hidden="true"></i>
+                        Twitter
+                    </a></li>
+                    <li><a href=""> <i class="fa-brands fa-instagram" aria-hidden="true"></i> 
+                        Instagram</a></li>
+                    <li><a href=""></i> Linkedin</a></li>
+                    <li><a href=""> <i class="fa-brands fa-youtube" aria-hidden="true"></i> Youtube</a></li>
+                   
+                </ul>
+            </div>
+            <div class="l-3   footer-top-item ">
+                <span class="Customer-care-h1">
+                    SHOP HOA FLOWERCORNER
+                </span>
+            <br>
+            <br>
+            <ul class="Customer-care Customer-care-internet">
+                <li>
+                    <span class="Customer-care-h1" style="text-transform: none;">
+                        Cửa Hàng TP HCM:
+                    </span>
+                    <a href="">
+                        225/3 Nguyễn Đình Chiểu, Phường 5, Quận 3, TP.HCM
+                    </a>
+                </li>
+                <br>
+                
+                <li>
+                    <span class="Customer-care-h1" style="text-transform: none;">
+                        Văn Phòng TP HCM: 
+                    </span>
+                    <a href="">
+                        412 Lê Hồng Phong, Phường 1, Quận 10, TP.HCM
+                    </a>
+                </li>
+                <br>
+              
+                <li>
+                    <span class="Customer-care-h1" style="text-transform: none;">
+                        Chi nhánh Hà Nội: 
+                    </span>
+                    <a href="">
+                        65 Trần Phú, Ba Đình, Hà Nội
+                    </a>
+                </li>
+
+                <li>
+                    <p >
+                        CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ ZAS
+                    </p>
+                    <p>Mã số thuế: 0313630426</p>
+                </li>
+                
+            </ul>
+            </div>
+        </div>
+        
+    </footer>
+    
+    <!-- footer-bottom -->
+    <div class="fixed-bottom">
+        <div class="list-fixed-bottom ">
+            <div class="sibar" >
+                <a href="">
+                    <i class="fa-solid fa-phone-volume" style="color: #fff;"></i>
+                    <span style="color: #fff;">Gọi ngay 1900 633 045</span>
+
+                </a>
+            </div>
+            <div  class="sibar">
+                <a href="">
+                   
+                    <span style="color: #fff;">Zalo</span>
+                </a>
+            </div>
+            <div  class="sibar">
+                <a href="">
+                    <i style="color: #fff;" class="fa-brands fa-facebook-messenger"></i>
+                    <span style="color: #fff;">Facebook</span>
+
+                </a>
+            </div>
+            
+
+        </div>
+    </div>
+
+    <div class="button-fixed">
+        <a href="">
+
+            <i style="color: #fff;" class="fa-brands fa-facebook-messenger"></i>
+        </a>
+        
+    </div>
+    <script src="/Javascrip/home.js"></script>
+    <script src="/Javascrip/angular.min.js"></script>
+    <script src="/Javascrip/global.js"></script>
+    <script src="/Javascrip/product.js"></script>
+    <script src="/Javascrip/detail.js"></script>
+
+</body>
+</html>

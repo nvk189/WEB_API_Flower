@@ -1,0 +1,28 @@
+
+
+
+<!DOCTYPE html>
+<html ng-app="AppBanHoa">
+<head>
+</head>
+<body >
+
+  <div class="col-12 col-s-12 padding-box">
+    <input type="file" id="imgproduct" onchange="loadFile(event)">
+    <center>
+        <span style="float: left;">View:</span>
+        <img id="viewimg" style="max-width:180px;max-height:180px;margin-top: 10px;">
+    </center>
+</div>
+
+  <script>
+       function loadFile(event) {
+                var image = document.getElementById('viewimg');
+                image.src = URL.createObjectURL(event.target.files[0]);
+                console.log(image.src)
+            }
+  
+  </script>
+</body>
+</html>
+

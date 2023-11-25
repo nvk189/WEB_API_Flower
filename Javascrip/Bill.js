@@ -77,7 +77,7 @@ $scope.them = function(){
       
    $http({
         method: 'POST',
-        url: current_url + "/api/HoaDon/create-hoadon",
+        url: current_url_use + "/api/HoaDon/create-hoadon",
         data: JSON.stringify(data),
     })
     .then(function(response) {
@@ -85,6 +85,7 @@ $scope.them = function(){
     //   console.log($scope.createBan)
       
       alert('Đặt hàng thành công')
+      window.location.href="/html/Home.html"
     
      
     })

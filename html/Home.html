@@ -13,6 +13,7 @@
     <script src="/Javascrip/global.js"></script>
     <script src="/Javascrip/api.js"></script>
     <script src="/Javascrip/detail.js"></script>
+    <script src="/Javascrip/search.js"></script>
 
   
 
@@ -40,7 +41,7 @@
                 <ul class="list-inline">
                     <li class="list-inline-item list-item-login">
                          <div class="dropdown">
-                            <a href="" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
+                            <a href="./account.html" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
                             <ul class="menu-login">
                                 <li><a href="/html/Sign.html" class="dropdown-item">Đăng ký</a></li>
                                 <li><a href="/html/login.html" class="dropdown-item">Đăng nhập</a></li>
@@ -84,12 +85,13 @@
                 <div class="logo-list__three" >
                     <div class="logo-list-right" >
 
-                        <div class="list-three__left"  >
-                          <input  class="text-search" type="text" placeholder="Tìm kiếm">
-                          <a href="" style="display: inline-block;">
-                            <i class="fa-solid fa-magnifying-glass icon-search"></i>
-                        </a>
-                          
+                        <div class="list-three__left" ng-controller="HomeCtrl"  >
+                            <input  ng-model="searchuser_1" class="text-search" type="text" placeholder="Tìm kiếm">
+                              <a href="./search.html" style="display: inline-block;">
+                               <i ng-click="click()"  class="fa-solid fa-magnifying-glass icon-search"></i>
+                              </a>
+                            
+                        </div>
                         </div>
                         <div  class="shopping-cart" ng-controller="Detail">
 
@@ -284,7 +286,7 @@
                                 </div>
                                 <div class="text-flower">
                                     <p class="name-flower">{{x.tenSanPham}}</p>
-                                    <span class="price-sale">{{x.giaGiam}} VND</span>
+                                    <span class="price-sale" ng-show="checkPriceSale(x.giaGiam)">{{x.giaGiam}}</span>VND
                                     <span class="price">{{x.gia}} VND</span>
                                  </div>
                                 <div class="sub-item" >

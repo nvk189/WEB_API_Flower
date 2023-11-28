@@ -3,30 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tài khoản</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/bass.css">
     <link rel="stylesheet" href="/assets/css/grid.css">
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/bill.css">
-    <!-- <link rel="stylesheet" href="/assets/css/login.css"> -->
+    <link rel="stylesheet" href="/assets/css/login.css">
     <link rel="stylesheet" href="/assets/css/responsive.css">
     <script src="/Javascrip/angular.min.js"></script>
     <script src="/Javascrip/global.js"></script>
-    <script src="/Javascrip/Bill.js"></script>
-    <script src="/Javascrip/api.js"></script>
     <script src="/Javascrip/detail.js"></script>
-    
-</head>
-<body ng-app="AppBanHoa"  >
+    <script src="/Javascrip/api.js"></script>
+    <script src="/Javascrip/tkuser.js"></script>
+</head >
+<body  ng-app="AppBanHoa">
     <!-- header -->
     <!-- header-top -->
     <nav id="top">
@@ -49,15 +39,15 @@
                 <ul class="list-inline">
                     <li class="list-inline-item list-item-login">
                          <div class="dropdown">
-                            <a href="./account.html" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
+                            <a href="" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
                             <ul class="menu-login">
                                 <li><a href="" class="dropdown-item">Đăng ký</a></li>
-                                <li><a href="" class="dropdown-item">Đăng nhập</a></li>
+                                <li><a href="/html/login.html" class="dropdown-item">Đăng nhập</a></li>
                              </ul>
                         </div>
                     </li>
                     <li class="list-inline-item"><a href="./Cart.html" title="Giỏ hàng"><i class="fa-solid fa-bag-shopping"></i> <span class="d-none d-md-inline">Giỏ hàng</span></a></li>
-                    <li class="list-inline-item"><a href="" title="Thanh toán"><i class="fa-solid fa-share"></i> <span class="d-none d-md-inline">Thanh toán</span></a></li>
+                    <li class="list-inline-item"><a href="./Bill.html" title="Thanh toán"><i class="fa-solid fa-share"></i> <span class="d-none d-md-inline">Thanh toán</span></a></li>
                     </ul>
             </div>
         </div>
@@ -99,8 +89,8 @@
                                <i ng-click="click()"  class="fa-solid fa-magnifying-glass icon-search"></i>
                               </a>
                             
-                </div>
-                        <div class="shopping-cart" ng-controller="Detail">
+                        </div>
+                        <div  class="shopping-cart" ng-controller="Detail">
 
                             <a href="" class="link-icon-shopping" style="display: inline-block;">
     
@@ -152,14 +142,14 @@
     </div>
 
     <!-- main -->
-    <main ng-controller="BillCtrl" >
+    <main >
 
         <div class="header-list">
             <div class="list-item">
                 <div class="item-check">
                     <ul class="list-item__check">
                         <li class="item-brithday  ">
-                            <a href=" /html/product.html"  class="item-brithday-link">
+                            <a href="">
                                 HOA SINH NHẬT
                             </a>
     
@@ -169,7 +159,7 @@
                         </li>
     
                         <li class="item-brithday">
-                            <a href=" /html/product.html"  class="item-brithday-link">
+                            <a href="">
                                 HOA KHAI TRƯƠNG
                             </a>
      
@@ -179,7 +169,7 @@
                          </li>
 
                          <li class="item-brithday">
-                            <a href=" /html/product.html" class="item-brithday-link">
+                            <a href="">
                             CHỦ ĐỀ
                             </a>
      
@@ -189,7 +179,7 @@
                          </li>
     
                          <li class="item-brithday">
-                            <a href=" /html/product.html"  class="item-brithday-link">
+                            <a href="">
                             THIẾT KẾ
                             </a>
      
@@ -200,7 +190,7 @@
                          </li>
                         
                          <li class="item-brithday">
-                            <a href=" /html/product.html"  class="item-brithday-link">
+                            <a href="">
                             HOA TƯƠI
                             </a>
      
@@ -210,7 +200,7 @@
                          </li>
     
                          <li class="item-brithday">
-                            <a href=" /html/product.html"  class="item-brithday-link">
+                            <a href="">
                             QUÀ TẶNG
                             </a>
      
@@ -218,9 +208,8 @@
                             </ul>
                          </li>
     
-                         <li class="item-brithday">
-                            <a href=" /html/product.html"  class="item-brithday-link">
-                            HOA TƯƠI GIẢM GIÁ
+                         <li class="item-brithday"><a href="">
+                            HOA TƯƠI GIẢM 30%
                             </a>
                          </li>
                     </ul>
@@ -230,91 +219,52 @@
         <div class="header-notice">
             <p class="header-notice__text">ĐẶT HOA ONLINE - GIAO MIỄN PHÍ TP HCM &amp; HÀ NỘI - GỌI NGAY 1900 633 045 HOẶC 0865 160 360</p>
         </div>
-   <!-- thông tin hóa đơn nhập -->
-        <div class="grid wide" style="display: flex;">
-            <!-- thông tin hóa đơn -->
-            <div class="c-6 "  >
-                <h3>Thông tin hóa đơn</h3>
-                <div class="address">
-                    <div class=" infor-item infor-1">
-                        <span  id="text-bill" class=" text-name">  <span class="icon-note">*</span> Họ và tên</span>
-                        <p >
-                            <input ng-model="hoten" id="cusname" class="text-search" type="text" placeholder="Nhập họ và tên...">
-                           
-                        </p>
-                    </div>
-                    <div class=" infor-item infor-1">
-                        <span  id="text-bill" class=" text-name">  <span class="icon-note">*</span> Số điện thoại</span>
-                        <p >
-                            <input ng-model="dienthoai" id="cusphone" class="text-search" type="text" placeholder="Nhập số điện thoại...">
-                           
-                        </p>
-                    </div>
-                    <div class=" infor-item infor-1">
-                        <span  id="text-bill" class=" text-name">  <span class="icon-note">*</span> Địa chỉ</span>
-                        <p >
-                            <input ng-model="diachi" id="cusaddress" class="text-search" type="text" placeholder="Nhập địa chỉ...">
-                           
-                        </p>
-                    </div>
-                    <div class=" infor-item infor-1">
-                        <span  id="text-bill" class=" text-name">  <span class="icon-note">*</span> Ngày giao hàng</span>
-                        <p >
-                            <input ng-model="ngaygiao" id="cusdate" class="text-search" type="datetime-local" >
-                           
-                        </p>
-                    </div>
 
+        <div class=" grid wide "   style="display: flex; height:  600px;">
+            <div class="l-9 " >
+                <div class="info-sign" style="width: 100%;">
+                    <h1 >Tài khoản của tôi</h1>
+                  
+                    <p >
+                        <a href="./user.html" style="color: #e91e63; text-decoration: none ; font-weight: 400; line-height: 20px;">
+                            Chỉnh sửa thông tin tài khoản của bạn
+
+                        </a>
+                    </p>
+                    <p >
+                        <a href="./userpass.html" style="color: #e91e63; text-decoration: none;font-weight: 400; line-height: 28px;">
+                           Thay đổi mật khẩu của bạn
+
+                        </a>
+                    </p>
+                </div>
+                <div class="info-sign" style="width: 100%; margin-top: 20px;">
+                    <h1 >Đơn đặt hàng của tôi</h1>
+                   
+                    <p >
+                        <a href="./user.html" style="color: #e91e63; text-decoration: none ; font-weight: 400; line-height: 20px;">
+                            Xem lịch sử đặt hàng của bạn
+
+                        </a>
+                    </p>
+                  
                 </div>
             </div>
-            <!--  thông tin sản phẩm -->
-            <div class="c-6" style="padding: 0 30px;">
-                <h3>Thông tin sản phẩm</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Hình ảnh</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Giá </th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="x in listBill ">
-                            <td style="text-align: center;">
-                                <img ng-src="{{x.anhDaiDien}}" alt="" style="width: 50px; height: 50px;border: 4px solid #ccc; border-radius: 5px;"></td>
-                            <td style="text-align: center;">{{x.soLuong}}x{{x.tenSanPham}}</td>
-                            <td style="text-align: center;">{{x.gia}}VND</td>
-                            <td style="text-align: center;" ><i ng-click="removeProduct($index)" class="fa-solid fa-circle-xmark" style="color: #fff; padding: 10px; background-color: #e91e63; border-radius: 5px; cursor: pointer;"></i></td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="3" style="text-align: right; font-size: 16px;"  > Tổng tiền:</td>
-                            <td style="text-align: center;">{{totalbill}}VND</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <div  class="btn_add-bill c-12" style=" margin-top: 20px; display: flex;">
-                    <div  class="c-7" style="background-color: #e91e63; color: #fff; text-align: center; border-radius:5px ; cursor: pointer; margin: 10px 10px;">
-                        <p ng-click="them()" style="padding: 10px; font-size: 20px;">
+            <div class="l-3 login-3">
+                <div class="list-login">
 
-                            Đặt hàng
-                        </p>
-                    </div>
-                    <div  class="c-5" style="background-color:#ccc; text-align: center; border-radius:5px ; cursor: pointer; margin: 10px 10px;">
-                        <p  style="padding: 10px; font-size: 20px;">
-                            <a href="/html/Home.html" style="text-decoration: none; color: #000;">
-
-                                Hủy 
-                            </a>
-
-                        </p>
-                    </div>
+                    <ul class="login-3-list">
+                        
+                        <li><a href="./login.html"> Đăng nhập</a></li>
+                        <li><a href="./Sign.html">Đăng ký</a></li>
+                        <li><a href="">Đã quên mật khẩu</a></li>
+                        <li><a href="./user.html">Tài khoản của tôi</a></li>
+                        <li><a href="">Lịch sử đơn hàng</a></li>
+                    </ul>
                 </div>
             </div>
-            
         </div>
+       
     </main>
        
     
@@ -502,7 +452,5 @@
     <script src="/Javascrip/home.js">
 
     </script>
-</body>
-</html>
 </body>
 </html>

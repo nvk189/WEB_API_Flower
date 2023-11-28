@@ -129,6 +129,18 @@
                                     <input ng-model="giagiam" type="number" id="giagiam" placeholder="Nhập giá giảm...">
                                 </div>
                                 <div class="col-12 col-s-12 padding-box">
+                                    <label for="txtright">Trạng thái:</label>
+                                </div>
+                                <div class="col-12 col-s-12 padding-box">
+                                    
+                                    <select name="trangthai" id="trangthai" ng-model ="trangthai"   >
+                                        <option value="true">Kinh doanh</option>
+                                        <option value="false">Ngừng kinh doanh</option>
+                                       
+                                        
+                                    </select>
+                                </div>
+                                <div class="col-12 col-s-12 padding-box">
                                     <label for="txtright">Đặc biệt:</label>
                                 </div>
                                 <div class="col-12 col-s-12 padding-box">
@@ -232,6 +244,9 @@
                 var image = document.getElementById('viewimg');
                 image.src = URL.createObjectURL(event.target.files[0]);
             }
+       
+
+
 
        </script>
     </section>

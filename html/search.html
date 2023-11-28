@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="/assets/css/grid.css">
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/product.css">
+    <link rel="stylesheet" href="/assets/css/search.css">
     <link rel="stylesheet" href="/assets/css/responsive.css">
     
 </head>
-<body  ng-app="AppBanHoa"  ng-controller="ListCtrl">
+<body  ng-app="AppBanHoa"  >
     <!-- header -->
     <!-- header-top -->
     <nav id="top">
@@ -79,14 +80,14 @@
                 <div class="logo-list__three" >
                     <div class="logo-list-right" >
 
-                        <div class="list-three__left"  >
-                          <input  class="text-search" type="text" placeholder="Tìm kiếm">
-                          <a href="" style="display: inline-block;">
-                            <i class="fa-solid fa-magnifying-glass icon-search"></i>
-                        </a>
+                        <div class="list-three__left" ng-controller="SearchUser"  >
+                          <input ng-model="searchuser_1" class="text-search" type="text" placeholder="Tìm kiếm">
+                          <a href="./search.html" style="display: inline-block;">
+                            <i  class="fa-solid fa-magnifying-glass icon-search" style="cursor: pointer;"></i>
+                          </a>
                           
                         </div>
-                        <div class="shopping-cart">
+                        <div  class="shopping-cart" ng-controller="Detail">
 
                             <a href="" class="link-icon-shopping" style="display: inline-block;">
     
@@ -94,16 +95,40 @@
                             </a>
                             <div class="amount-shop">
                                 <span class="about-shop">
-                                    0
+                                    {{sum}}
                                 </span>
                             </div>
                             <div class="list-cart" >
 
-                                <ul class="" >
-                                    <li class="name-cart">
-                                        Giỏ hàng của bạn đang trống!
+                                <ul class="Cartsum" style="max-height:200px ;overflow-x: hidden;" >
+                                    <li class="name-cart" ng-repeat="x in list track by x.maSanPham" style="display: flex; justify-content: space-between;  border-bottom: 1px solid #ccc;">
+                                        <a href="/html/detail.html?id={{x.maSanPham}}" style="display: flex; justify-content: space-between;text-decoration: none  ; width: 100%;">
+
+                                            <div class="" style="width: 20%;">
+                                                <img ng-src="{{x.anhDaiDien}}" alt="" class="item-image">
+                                            </div>
+                                            <div class="" style="display: flex; justify-content: center;   align-items: center;width: 60%;">
+    
+                                                <p class="item-name">{{x.tenSanPham}}</p>
+                                            </div>
+                                            <div class="" style="display: flex; justify-content: center;   align-items: center;width: 20%;" >
+    
+                                                <p class="item-quantity" style="color: #000;">{{x.soLuong}}</p>x
+                                                <p  class="item-price" style="color: #000;">{{x.gia}}</p>
+                                            </div>
+                                        </a>
+                                            <div class="icon-delete" style="display: flex; justify-content: center;   align-items: center;">
+                                                <i ng-click="removeItem(x)" class="fa-solid fa-trash-can" style="font-size: 16px; padding-right: 3px; cursor: pointer; color: #000;"></i>
+                                            </div>
                                     </li>
-                                 </ul>
+                                    <li class="Total-money">
+                                        <div class="">
+                                            <div class=""  style="display: flex; float: right; margin-right: 20px; margin-top: 20px;">
+                                                <a href="./Cart.html" style="text-decoration: none; font-size: 16px; color: #e91e63;"> giỏ hàng</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         
@@ -194,102 +219,92 @@
         </div>
 
         <!-- Mục tìm kiếm -->
-        <div class="grid wide" style="height: 300px; margin-top:10px;">
-            <div class="item-search">
-                <h2>Tìm kiếm - hoa</h2>
-            </div>
-            <div class="">
-                <div class="">
-                    <h4>Tiêu chí tìm kiếm</h4>
-                    <input type="text">
-                </div>
-                <div class="">
-                    <h4>Tìm kiếm danh mục</h4>
-                    <select name="category_id" id="input-category" class="form-select mb-1">
-                        <option value="0">Tất cả danh mục</option>
-                        <option value="307"> VN Congratulations</option>
-                        <option value="320">Bó Hoa Bằng Tiền</option>
-                        <option value="272">Bó Hoa Cẩm Tú Cầu</option>
-                      
-                        </select>
-                </div>
-            </div>
-            
-        </div>
-    <!-- danh sách  sản phẩm -->
-        <div class="list-product">
-            <div class="grid wide product-list-item" >
-                <h1>
+        <div class="grid wide" ng-controller="SearchUser" >
 
-                    <span   class="text-product">Danh sách sản phẩm</span>
-                </h1>
-                <div class="menu-list-product" style="margin-bottom: 50px;">
-                    <div class=" icon-menu-list">
-                        <i class="fa-solid fa-table-cells"></i>
+            <div  style=" margin-top:10px; margin-bottom: 20px;">
+                <div class="header_search">
+    
+                    <div class="item-search">
+                        <span class="name_search">Tìm kiếm </span>
                     </div>
-                    <div class="page-list">
-                        
-                        <div class="number-text">
-                            <label for="">Sắp xếp theo</label>
-                            <select id="input-sort" class="form-select" onchange="location = this.value;">
-                                <!-- <option value="">Mặc định</option>
-                                <option value="">Tên (A - Z)</option>
-                                <option value="">Tên (Z - A)</option> -->
-                                <option value="">Giá (Thấp&gt; Cao)</option>
-                                <option value="">Giá (Cao&gt; Thấp)</option>
-                                <!-- <option value="">Mô hình (A - Z)</option>
-                                <option value="" selected="">Mô hình (Z - A)</option> -->
-                                </select>
+                    <div class="list_search" >
+                        <div class="search_item c-6">
+                            <h4>Tiêu chí tìm kiếm</h4>
+                            <input id="text-search" ng-model="searchuser" class="text-search c-11 search_item_input" type="text" placeholder="Tìm kiếm">
                         </div>
-
-                        
-                        <!-- <div class="number-page">
-                            <label for="">Số lượng</label>
-                            <select id="input-sort" class="form-select" onchange="location = this.value;">
+                        <div class="search_item c-6 chuyenmuc">
+                            
+                            <select    class="c-11" name="chuyenmuc" id="chuyenmuc"   >
+                                <option value="choose">Tất cả danh mục</option>
+                                <option value="true">Giá (Thấp > Cao)</option>
+                                <option value="false">Giá (Cao > Thấp)</option>
+                                <!-- <option   ng-repeat=" x in maloaisp" value="{{x.maChuyenMuc}}">{{x.tenChuyenMuc}}</option> -->
                                 
-                                <option value="">12</option>
-                                <option value="">24</option>
-                                <option value="" selected="">48</option>
-                                </select>
-                        </div> -->
-                        
+                            </select>
+                        </div>
                     </div>
-
-                    
-
+                   
+                    <div class="search_item c-6" style="display: flex ; justify-content: left; align-items: center;">
+                        <div class="btn_search">
+                            <p ng-click="timkiemsp()">Tìm kiếm</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flower grid wide ">
-                    <div class="flower-list ">
-                        <!-- <h2 class="text-item ">đang giảm giá</h2> -->
-                          
-                        <div class="flower-item  row grid wide" >
-                            <div  ng-repeat=" x in listsearch " class="flower-items  col l-3 m-4 c-6">
-
-                                <div  class="img-flower">
-                                    <img class="img" ng-src="{{x.anhDaiDien}}" alt="{{x.tenSanPham}}">
-                                </div>
-                                <div class="text-flower">
-                                    <p class="name-flower">{{x.tenSanPham}}</p>
-                                    <span class="price-sale">{{x.giaGiam}} VND</span>
-                                    <span class="price">{{x.gia}} VND</span>
-                                 </div>
-                                <div class="sub-item" >
-                                    <a href="/html/detail.html?id={{x.maSanPham}}">
-                                      Đặt hàng
-                                    </a>
-                                   
+    
+                <div class="body_search c-12">
+                    <div class="item-search">
+                        <span class="name_search">Sản phẩm đạt tiêu chuẩn tìm kiếm </span>
+                    </div>
+                    <div class="select_search c-12">
+                        <div class="check_search" >
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                            <p>So sánh sản phẩm</p>
+                        </div>
+                        <div class="search_price">
+                            <p>Sắp xếp theo</p>
+                            <select    name="list_item_search" id="list_item_search"   >
+                                <option value="choose">---Mặc định---</option>
+                                <option value="true">Giá (Thấp > Cao)</option>
+                                <option value="false">Giá (Cao > Thấp)</option>
+                                <!-- <option   ng-repeat=" x in maloaisp" value="{{x.maChuyenMuc}}">{{x.tenChuyenMuc}}</option> -->
+                                
+                            </select>
+                        </div>
+                    </div>
+    
+                </div>
+                
+            </div>
+            <div class="flower  ">
+                <div class="flower-list ">
+                            <div class="flower-item  row grid wide" >
+                                <div  ng-repeat="x in searchsp " class="flower-items  col l-3 m-4 c-6">
+    
+                                    <div  class="img-flower">
+                                        <img class="img" ng-src="{{x.anhDaiDien}}" alt="{{x.tenSanPham}}">
+                                    </div>
+                                    <div class="text-flower">
+                                        <p class="name-flower">{{x.tenSanPham}}</p>
+                                        <span class="price-sale" >{{x.giaGiam}}</span>VND
+                                        <span class="price">{{x.gia}} VND</span>
+                                     </div>
+                                    <div class="sub-item" >
+                                        <a href="/html/detail.html?id={{x.maSanPham}}">
+                                          Đặt hàng
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                            
-                        
-                         
-                    </div>
-        
                 </div>
+            </div> 
+            
+            <div class="box-right">
+                <!-- <p>trang số {{pages}}</p> -->
+                <button style="background-color: #fff; margin: 0 3px; border-color: #ccc; padding: 5px 8px; color: #ed6b87; " ng-click="prevPage()"><i class="fas fa-angle-left"></i></button>
+                <button style="background-color: #fff; margin: 0 3px; border-color: #ccc; padding: 5px 10px; color: #ed6b87;"  ng-repeat="page in pages" ng-click="setPage(page)">{{ page }} </button>
+                <button style="background-color: #fff; margin: 0 3px; border-color: #ccc; padding: 5px 8px; color: #ed6b87;" ng-click="nextPage()"><i class="fas fa-angle-right"></i></button>
             </div>
         </div>
-    
     </main>
        
     
@@ -477,8 +492,8 @@
     <script src="/Javascrip/home.js"></script>
     <script src="/Javascrip/angular.min.js"></script>
     <script src="/Javascrip/global.js"></script>
-    <script src="/Javascrip/product.js"></script>
-    <!-- <script src="/Javascrip/api.js"></script> -->
+    <script src="/Javascrip/search.js"></script>
+    <script src="/Javascrip/detail.js"></script>
 
 </body>
 </html>

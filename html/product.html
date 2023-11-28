@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/assets/css/responsive.css">
     
 </head>
-<body  ng-app="AppBanHoa" ng-controller="ListCtrl" >
+<body  ng-app="AppBanHoa"  >
     <!-- header -->
     <!-- header-top -->
     <nav id="top">
@@ -79,14 +79,14 @@
                 <div class="logo-list__three" >
                     <div class="logo-list-right" >
 
-                        <div class="list-three__left"  >
-                          <input  class="text-search" type="text" placeholder="Tìm kiếm">
-                          <a href="" style="display: inline-block;">
-                            <i class="fa-solid fa-magnifying-glass icon-search"></i>
-                        </a>
-                          
+                        <div class="list-three__left" ng-controller="HomeCtrl"  >
+                            <input  ng-model="searchuser_1" class="text-search" type="text" placeholder="Tìm kiếm">
+                              <a href="./search.html" style="display: inline-block;">
+                               <i ng-click="click()"  class="fa-solid fa-magnifying-glass icon-search"></i>
+                              </a>
+                            
                         </div>
-                        <div class="shopping-cart">
+                        <div  class="shopping-cart" ng-controller="Detail">
 
                             <a href="" class="link-icon-shopping" style="display: inline-block;">
     
@@ -94,16 +94,40 @@
                             </a>
                             <div class="amount-shop">
                                 <span class="about-shop">
-                                    0
+                                    {{sum}}
                                 </span>
                             </div>
                             <div class="list-cart" >
 
-                                <ul class="" >
-                                    <li class="name-cart">
-                                        Giỏ hàng của bạn đang trống!
+                                <ul class="Cartsum" style="max-height:200px ;overflow-x: hidden;" >
+                                    <li class="name-cart" ng-repeat="x in list track by x.maSanPham" style="display: flex; justify-content: space-between;  border-bottom: 1px solid #ccc;">
+                                        <a href="/html/detail.html?id={{x.maSanPham}}" style="display: flex; justify-content: space-between;text-decoration: none  ; width: 100%;">
+
+                                            <div class="" style="width: 20%;">
+                                                <img ng-src="{{x.anhDaiDien}}" alt="" class="item-image">
+                                            </div>
+                                            <div class="" style="display: flex; justify-content: center;   align-items: center;width: 60%;">
+    
+                                                <p class="item-name">{{x.tenSanPham}}</p>
+                                            </div>
+                                            <div class="" style="display: flex; justify-content: center;   align-items: center;width: 20%;" >
+    
+                                                <p class="item-quantity" style="color: #000;">{{x.soLuong}}</p>x
+                                                <p  class="item-price" style="color: #000;">{{x.gia}}</p>
+                                            </div>
+                                        </a>
+                                            <div class="icon-delete" style="display: flex; justify-content: center;   align-items: center;">
+                                                <i ng-click="removeItem(x)" class="fa-solid fa-trash-can" style="font-size: 16px; padding-right: 3px; cursor: pointer; color: #000;"></i>
+                                            </div>
                                     </li>
-                                 </ul>
+                                    <li class="Total-money">
+                                        <div class="">
+                                            <div class=""  style="display: flex; float: right; margin-right: 20px; margin-top: 20px;">
+                                                <a href="./Cart.html" style="text-decoration: none; font-size: 16px; color: #e91e63;"> giỏ hàng</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         
@@ -114,7 +138,7 @@
     </div>
 
     <!-- main -->
-    <main  >
+    <main  ng-controller="ListCtrl">
 
         <div class="header-list">
             <div class="list-item">
@@ -450,6 +474,7 @@
     <script src="/Javascrip/global.js"></script>
     <script src="/Javascrip/product.js"></script>
     <script src="/Javascrip/detail.js"></script>
+    <script src="/Javascrip/api.js"></script>
 
 </body>
 </html>

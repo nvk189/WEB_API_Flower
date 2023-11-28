@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/assets/css/responsive.css">
     
 </head>
-<body  ng-app="AppBanHoa"  ng-controller="Detail">
+<body  ng-app="AppBanHoa"  >
     <!-- header -->
     <!-- header-top -->
     <nav id="top">
@@ -36,7 +36,7 @@
                 <ul class="list-inline">
                     <li class="list-inline-item list-item-login">
                          <div class="dropdown">
-                            <a href="" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
+                            <a href="./account.html" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
                             <ul class="menu-login">
                                 <li><a href="" class="dropdown-item">Đăng ký</a></li>
                                 <li><a href="" class="dropdown-item">Đăng nhập</a></li>
@@ -44,7 +44,7 @@
                         </div>
                     </li>
                     <li class="list-inline-item"><a href="" title="Giỏ hàng"><i class="fa-solid fa-bag-shopping"></i> <span class="d-none d-md-inline">Giỏ hàng</span></a></li>
-                    <li class="list-inline-item"><a href="" title="Thanh toán"><i class="fa-solid fa-share"></i> <span class="d-none d-md-inline">Thanh toán</span></a></li>
+                    <li class="list-inline-item"><a href="./Bill.html" title="Thanh toán"><i class="fa-solid fa-share"></i> <span class="d-none d-md-inline">Thanh toán</span></a></li>
                     </ul>
             </div>
         </div>
@@ -80,14 +80,14 @@
                 <div class="logo-list__three" >
                     <div class="logo-list-right" >
 
-                        <div class="list-three__left"  >
-                          <input  class="text-search" type="text" placeholder="Tìm kiếm">
-                          <a href="" style="display: inline-block;">
-                            <i class="fa-solid fa-magnifying-glass icon-search"></i>
-                        </a>
-                          
+                        <div class="list-three__left" ng-controller="HomeCtrl"  >
+                            <input  ng-model="searchuser_1" class="text-search" type="text" placeholder="Tìm kiếm">
+                              <a href="./search.html" style="display: inline-block;">
+                               <i ng-click="click()"  class="fa-solid fa-magnifying-glass icon-search"></i>
+                              </a>
+                            
                         </div>
-                        <div class="shopping-cart">
+                        <div class="shopping-cart" ng-controller="Detail">
 
                             <a href="" class="link-icon-shopping" style="display: inline-block;">
     
@@ -220,7 +220,7 @@
 
 
     <!-- danh sách giỏ hàng-->
-        <div class="list-product">
+        <div class="list-product" ng-controller="Detail">
             <div class="grid wide product-list-item" >
                 <h1>
 
@@ -485,6 +485,7 @@
     <script src="/Javascrip/angular.min.js"></script>
     <script src="/Javascrip/global.js"></script>
     <script src="/Javascrip/detail.js"></script>
+    <script src="/Javascrip/api.js"></script>
     <!-- <script src="/Javascrip/api.js"></script> -->
 
 </body>

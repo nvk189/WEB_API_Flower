@@ -13,7 +13,7 @@
   
 
 </head>
-<body ng-app="AppBanHoa"  ng-controller="Detail">
+<body ng-app="AppBanHoa" >
     <!-- header -->
     <!-- header-top -->
     <nav id="top">
@@ -88,14 +88,17 @@
                 <div class="logo-list__three" >
                     <div class="logo-list-right" >
 
-                        <div class="list-three__left"  >
-                          <input  class="text-search" type="text" placeholder="Tìm kiếm">
-                          <a href="" style="display: inline-block;">
-                            <i class="fa-solid fa-magnifying-glass icon-search"></i>
-                        </a>
-                          
+                        <div class="logo-list__three" >
+                            <div class="logo-list-right" >
+        
+                                <div class="list-three__left" ng-controller="HomeCtrl"  >
+                                    <input  ng-model="searchuser_1" class="text-search" type="text" placeholder="Tìm kiếm">
+                                      <a href="./search.html" style="display: inline-block;">
+                                       <i ng-click="click()"  class="fa-solid fa-magnifying-glass icon-search"></i>
+                                      </a>
+                                    
                         </div>
-                        <div  class="shopping-cart" >
+                        <div  class="shopping-cart"  ng-controller="Detail" >
 
                             <a href="" class="link-icon-shopping" style="display: inline-block;">
     
@@ -147,7 +150,7 @@
     </div>
 
     <!-- main -->
-    <main >
+    <main   ng-controller="Detail">
 
         <div class="header-list">
             <div class="list-item">
@@ -576,6 +579,7 @@
      <script src="/Javascrip/angular.min.js"></script>
      <script src="/Javascrip/global.js"></script>
      <script src="/Javascrip/detail.js"></script>
+     <script src="/Javascrip/api.js"></script>
 
 
 </body>

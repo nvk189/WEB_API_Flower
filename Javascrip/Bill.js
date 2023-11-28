@@ -61,6 +61,11 @@ console.log($scope.totalbill)
 // $scope.them =function(){
 
 // }
+$scope.user =JSON.parse (localStorage.getItem('newcart'))
+$scope.hoten= $scope.user[0].hoTen
+$scope.email= $scope.user[0].email
+$scope.dienthoai= $scope.user[0].dienThoai
+$scope.diachi= $scope.user[0].diaChi
 
 $scope.them = function(){
       var data= {

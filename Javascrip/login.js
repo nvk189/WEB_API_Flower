@@ -17,12 +17,15 @@ app.controller("LoginCtrl", function ($scope, $http) {
             $scope.loginData = response.data;
             console.log($scope.loginData.maloaitk)
             localStorage.setItem('newcart', JSON.stringify($scope.loginData.chitiet))
-            var customerId= 0;
-            customerId = JSON.parse(localStorage.getItem('newcart'))[0].maTaiKhoan;
+            console.log(localStorage.getItem('newcart'))
+           
+            // var customerId= 0;
+            // customerId = JSON.parse(localStorage.getItem('newcart'))[0].maTaiKhoan;
 
             if($scope.loginData.maloaitk ===1){
 
                 window.location.href = '/html/Home.html';
+                
             }
             else if($scope.loginData.maloaitk ===2){
                 
@@ -35,7 +38,6 @@ app.controller("LoginCtrl", function ($scope, $http) {
             else{
                 alert('Thông tin tài khoản hoặc mật khẩu không hợp lệ yêu cầu nhập lại')
             }
-            // console.log(JSON.parse(localStorage.getItem('newcart')))
         });
         
         

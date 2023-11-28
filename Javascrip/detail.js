@@ -17,14 +17,16 @@ app.controller("Detail", function ($scope, $http, ) {
   $scope.Detail = function () {
     $http({
       method: "GET",
-      url: `https://localhost:7261/api/SanPham/get-id/${$scope.id}`,
+      // url: `https://localhost:7261/api/SanPham/get-id/${$scope.id}`,
+      url: `https://localhost:7165/api/SanPham/get-id/${$scope.id}`,
     }).then(function (response) {
       $scope.listdetail = response.data;
 
       localStorage.setItem('sanpham',JSON.stringify($scope.listdetail))
       $http({
         method: "GET",
-        url: "https://localhost:7261/api/SanPham/get-chuyenmuc?chuyenmuc=" + $scope.listdetail.maChuyenMuc,
+        // url: "https://localhost:7261/api/SanPham/get-chuyenmuc?chuyenmuc=" + $scope.listdetail.maChuyenMuc,
+        url: "https://localhost:7165/api/SanPham/get-chuyenmuc?chuyenmuc=" + $scope.listdetail.maChuyenMuc,
       }).then(function (response) {
   
         $scope.detailitem = response.data;

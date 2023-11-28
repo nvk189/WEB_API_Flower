@@ -88,6 +88,13 @@ $scope.loaiData= function(selectedItem){
   $scope.soluong = selectedItem.soLuong,
   $scope.gia = selectedItem.gia,
   $scope.giagiam = selectedItem.giaGiam
+  if (selectedItem.trangThai === true) {
+    $scope.trangthai = "true";
+  } else if (selectedItem.trangThai === false) {
+    $scope.trangthai= "false"; 
+  } else {
+    $scope.trangthai= "choose"; 
+  }
   if (selectedItem.dacBiet === true) {
     $scope.dacbietma = "true";
   } else if (selectedItem.dacBiet === false) {
@@ -108,7 +115,7 @@ $scope.themsp = function() {
         gia: $scope.gia,
         giaGiam: $scope.giagiam,
         soLuong: $scope.soluong,
-        trangThai: true,
+        trangThai: JSON.parse($scope.trangthai),
         luotXem: 0,
         dacBiet: JSON.parse($scope.dacbietma),
         list_json_chitietsanpham: [
@@ -152,7 +159,7 @@ $scope.suasp = function() {
       gia: $scope.gia,
       giaGiam: $scope.giagiam,
       soLuong: $scope.soluong,
-      trangThai: true,
+      trangThai: JSON.parse($scope.trangthai),
       luotXem: 0,
       dacBiet: JSON.parse($scope.dacbietma),
       list_json_chitietsanpham: [
@@ -195,7 +202,8 @@ $scope.xoasp = function() {
     })
   }
   else{
-      $scope.GetProduct();
+      // $scope.GetProduct();
+      alert("Xóa thất bại")
   }
 
 }

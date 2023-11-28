@@ -7,6 +7,11 @@ app.controller("HomeCtrl", function ($scope, $http) {
   $scope.listItemhot=[];
   $scope.listItemNew=[];
  
+  $scope.click = function (){
+
+    localStorage.setItem("searh_fr" , JSON.stringify($scope.searchuser_1))
+    console.log(localStorage.getItem('searh_fr'))
+  }
   $scope.GetBanChay = function () {
     $http({
       method: "GET",
@@ -47,6 +52,10 @@ app.controller("HomeCtrl", function ($scope, $http) {
   $scope.GetNew();
 
 
+
+  $scope.checkPriceSale = function(giaGiam) {
+    return giaGiam !== 0;
+};
 });
 
 

@@ -12,6 +12,10 @@
     <script src="/Javascrip/angular.min.js"></script>
     <script src="/Javascrip/global.js"></script>
     <script src="/js/BillOut.js"></script>
+    <style>
+     
+
+    </style>
 </head>
 
 <body ng-app="AppBanHoa" ng-controller="BillOut">
@@ -120,7 +124,7 @@
                                     <select  ng-model="trangthai" ng-change="TrangthaiChanged()" name="trangthaihd" id="trangthaihd"   >
                                         <option value="choose">---Chọn trạng thái---</option>
                                         <option value="true">Thành công</option>
-                                        <option value="false">Trả hàng</option>
+                                        <option value="false">Thất bại</option>
                                         <!-- <option   ng-repeat=" x in maloaisp" value="{{x.maChuyenMuc}}">{{x.tenChuyenMuc}}</option> -->
                                         
                                     </select>
@@ -151,7 +155,11 @@
                                         <td><input type="text" ng-model="x.maSanPham" placeholder="Mã sản phẩm..."></td>
                                         <td><input type="number" ng-model="x.soLuong" placeholder="Số lượng..."></td>
                                         <td><input type="number" ng-model="x.gia" placeholder="Đơn giá..."></td>
-                                        <td><button ng-click="removeProduct1($index)"><i class="fas fa-trash"></i></button></td>
+                                        <td>
+                                            <!-- <button ng-click="removeProduct1($index)">
+                                            <i class="fas fa-trash"></i>
+                                            </button> -->
+                                        </td>
                                        
                                     </tr>
 
@@ -165,6 +173,8 @@
                             ng-click="them()">Thêm hóa đơn bán</button>
                         <button class="btn-form" style="background-color: rgba(227, 32, 21, 0.8);"
                             onclick="NhapMoi()">Nhập mới</button>
+                        <button class="btn-form" style="background-color: rgba(227, 32, 21, 0.8);"
+                            >   <a href="./In.html">In hóa đơn</a></button>
                     </div>
                 </div>
                 <div class="col-8 col-s-12 content">
@@ -211,7 +221,7 @@
                                             <td >{{x.diaChi}}</td>
                                             <td >{{x.ngayGiaoHang}}</td>
                                             <td >{{x.tongTien}}</td>
-                                            <td >{{x.trangThai}}</td>
+                                            <td >{{x.trangThai ==0? 'Thất bại ': 'Thành công'}}</td>
                                             <td >
                                                 <i ng-click="sua()" class="fas fa-edit" title="Sửa"></i>
                                                 <i ng-click="xoa()" class="fas fa-trash-alt" title="Xóa"></i>
@@ -239,172 +249,7 @@
                 </div>
             </div>
         </div>
-        <!-- <script>
-            var user = JSON.parse(localStorage.getItem('user'));
-            if (!user) {
-                window.location.href = "../admin/login.html";
-            }
-
-            LoadUser();
-
-            // var sanpham = '<tr>\
-            //             <td>\<input type="text" class="" placeholder="Mã sản phẩm...">\</td>\
-            //             <td>\
-            //                 <input type="text" class="" placeholder="Tên sản phẩm...">\
-            //             </td>\
-            //             <td>\
-            //                 <input type="number" class="" placeholder="Số lượng...">\
-            //             </td>\
-            //             <td>\
-            //                 <input type="number" class="" placeholder="Đơn giá...">\
-            //             </td>\
-            //             <td>\
-            //                 <button class="" onclick="XoaSanPham(this)"><i class="fas fa-trash"></i></button>\
-            //             </td>\
-            //         </tr>';
-            // $("#AddSanPham").click(function (e) {
-            //     $("#DSSanPham").append(sanpham);
-            // });
-
-            var list = JSON.parse(localStorage.getItem('Export')) || [];
-
-            function ThemHoaDon() {
-                var mahd = document.getElementById("mahd").value;
-                var khachhang = document.getElementById("khachhang").value;
-                var sdtkh = document.getElementById("sdtkh").value;
-                var emailkh = document.getElementById("emailkh").value;
-                var diachikh = document.getElementById("diachikh").value;
-                var tongsanpham = document.getElementById("tongsanpham").value;
-                var tongtien = document.getElementById("tongtien").value;
-                var ghichu = document.getElementById("ghichu").value;
-                var ngaytao;
-                var number = /^[0-9]+$/;
-                var atposition = emailkh.indexOf("@");
-                var dotposition = emailkh.lastIndexOf(".");
-
-                if (mahd == null || mahd == "") {
-                    var d = new Date();
-                    mahd = Number(d);
-                }
-                else if (!mahd.match(number) || mahd.length != 13) {
-                    alert("Mã hóa đơn phải là kiểu số và có độ dài là 13 ký tự! Vui lòng nhập lại!");
-                    return false;
-                }
-
-                if (khachhang == "" || khachhang == null) {
-                    alert("Tên khách hàng không được để trống! Vui lòng nhập lại!");
-                    return false;
-                }
-                else if (sdtkh == null || sdtkh == "") {
-                    alert("Số điện thoại khách hàng không được để trống! Vui lòng nhập lại!");
-                    return false;
-                } else if (!sdtkh.match(number) || sdtkh.length != 10) {
-                    alert("Số điện thoại khách hàng phải là kiểu số và có độ dài là 10 ký tự! Vui lòng nhập lại!");
-                    return false;
-                }
-                else if (emailkh != "" && emailkh != null && (atposition < 1 || dotposition < (atposition + 2) || (dotposition + 2) >= emailkh.length)) {
-                    alert("Email khách hàng không hợp lệ! Vui lòng nhập lại!");
-                    return false;
-                }
-                else if (diachikh == null || diachikh == "") {
-                    alert("Địa chỉ khách hàng không được để trống! Vui lòng nhập lại!");
-                    return false;
-                }
-                else {
-                    for (var x of list) {
-                        if (x.mahd == mahd) {
-                            alert("Mã hóa đơn đã tồn tại! Vui lòng nhập lại!")
-                            return false;
-                        }
-                    }
-                }
-
-                var date = new Date().toLocaleDateString();
-                var time = new Date().toLocaleTimeString();
-                ngaytao = date + " " + time;
-
-                console.log("AddExport");
-                if (list == null) list = [];
-                var exports = {
-                    "mahd": mahd,
-                    "khachhang": khachhang,
-                    "sdtkh": sdtkh,
-                    "emailkh": emailkh,
-                    "diachikh": diachikh,
-                    "tongsanpham": tongsanpham,
-                    "tongtien": tongtien,
-                    "ghichu": ghichu,
-                    "ngaytao": ngaytao
-                };
-                list.push(exports);
-                localStorage.setItem("Export", JSON.stringify(list));
-                alert("Đã thêm thành công!");
-                location.reload();
-            }
-
-            function NhapMoi() {
-                document.getElementById('mahd').value = '';
-                document.getElementById('khachhang').value = '';
-                document.getElementById('sdtkh').value = '';
-                document.getElementById('emailkh').value = '';
-                document.getElementById('diachikh').value = '';
-                document.getElementById('tongsanpham').value = '';
-                document.getElementById('tongtien').value = '';
-                document.getElementById('ghichu').value = '';
-                document.getElementById('ngaytao').value = '';
-            }
-
-            function LoadData() {
-                var str = "";
-                var sl = 0;
-                var ttien = 0;
-                list.sort();
-                for (x of list) {
-                    sl++;
-                    ttien += Number(x.tongtien);
-                    str += `<tr>
-                        <td style="text-align: center;padding-top: 10px;"><input type="checkbox" name="check_all"></td>
-                            <td>`+ x.mahd + `</td>
-                            <td>`+ x.khachhang + `</td>
-                            <td>`+ x.sdtkh + `</td>
-                            <td>`+ x.emailkh + `</td>
-                            <td>`+ x.diachikh + `</td>
-                            <td style="text-align: center;">`+ x.tongsanpham + `</td>
-                            <td style="text-align: right;">`+ x.tongtien + `</td>
-                            <td style="text-align: center;">`+ x.ngaytao + `</td>
-                            <td style="text-align: center;">
-                                <i class="fas fa-edit" title="Sửa" onclick="SuaHoaDon(`+ x.mahd + `)"></i>
-                                <i class="fas fa-trash-alt" title="Xóa" onclick="XoaHoaDon(`+ x.mahd + `)"></i>
-                            </td>
-                        </tr>
-                    `;
-                }
-                document.getElementById("listExport").innerHTML = str;
-                $('#soluong').html(sl);
-                $('#tongtienhd').html(ttien);
-            }
-            LoadData();
-
-            function XoaHoaDon(mahd) {
-                if (confirm("Bạn chắc chắn muốn xóa!")) {
-                    var index = list.findIndex(x => x.mahd == mahd);
-                    if (index >= 0) {
-                        list.splice(index, 1);
-                    }
-                    LoadData();
-                    localStorage.setItem('Export', JSON.stringify(list));
-                }
-            }
-
-            function CheckAll(parent) {
-                var ids = document.getElementsByTagName('input');
-                for (var i = 0; i < ids.length; i++) {
-                    if (ids[i].name == "check_all") {
-                        ids[i].checked = parent.checked;
-                    }
-                }
-            }
-        </script> -->
+      
     </section>
 </body>
 

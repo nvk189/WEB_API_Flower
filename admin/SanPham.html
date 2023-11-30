@@ -146,8 +146,8 @@
                                 <div class="col-12 col-s-12 padding-box">
                                     <!-- <input ng-model="dacbiet" type="number" id="giaban" placeholder="Nhập giá trị 1 hoặc 0"> -->
                                     <select name="dacbiet" id="dacbiet" ng-model ="dacbietma" ng-change ="getdb()"  >
-                                        <option value="false">False</option>
-                                        <option value="true">True</option>
+                                        <option value="false">Không </option>
+                                        <option value="true">Có</option>
                                         <!-- <option   ng-repeat=" x in maloaisp" value="{{x.maChuyenMuc}}">{{x.tenChuyenMuc}}</option> -->
                                         
                                     </select>
@@ -238,12 +238,22 @@
                 </div>
             </div>
         </div>
+        <!-- <a href="/assets/img/slider-1.webp"></a> -->
        <script>
         
+        // function loadFile(event) {
+        //         var image = document.getElementById('viewimg');
+        //         image.src = URL.createObjectURL(event.target.files[0]);
+        //     }
+
         function loadFile(event) {
-                var image = document.getElementById('viewimg');
-                image.src = URL.createObjectURL(event.target.files[0]);
-            }
+            var image = document.getElementById('viewimg');
+            var fileName = event.target.files[0].name; // Lấy tên file
+            var imagePath = '/assets/img/' + fileName; // Tạo đường dẫn
+
+            image.src = imagePath;
+        }
+
        
 
 

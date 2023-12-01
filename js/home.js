@@ -1,5 +1,6 @@
 
-var app = angular.module('AppBanHang', []);
+// var app = angular.module('AppBanHang', []);
+app
 
 app.controller("HomeCtrl", function ($scope, $http) {
 $scope.listItem = [];

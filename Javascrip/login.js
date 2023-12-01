@@ -25,7 +25,11 @@ app.controller("LoginCtrl", function ($scope, $http) {
             if($scope.loginData.maloaitk ===1){
 
                 window.location.href = '/html/Home.html';
-                
+                // console.log('a')
+                // document.getElementById("home").style.display='none'
+                // document.getElementById("home_user").style.display = 'none';
+                document.getElementById("Cartsum").style.display = 'block';
+                document.getElementById("CartZezo").style.display = 'none';
             }
             else if($scope.loginData.maloaitk ===2){
                 
@@ -35,16 +39,20 @@ app.controller("LoginCtrl", function ($scope, $http) {
                 
                 window.location.href = '/admin/TongQuan.html';
             }
-            else{
+            else if($scope.loginData.maloaitk !=3 & $scope.loginData.maloaitk !=2 & $scope.loginData.maloaitk !=1 ){
                 alert('Thông tin tài khoản hoặc mật khẩu không hợp lệ yêu cầu nhập lại')
             }
         });
-        
-        
-        
     };
-    
-          // Kiểm tra tính hợp lệ của token
+
+    $scope.sign = function () {
+        localStorage.removeItem('newcart');
+        console.log( localStorage.removeItem('newcart'))
+        window.location.href = '/html/login.html'; 
+        document.getElementById("home_user").style.display = 'none';
+        document.getElementById("Cartsum").style.display = 'none';
+        document.getElementById("CartZezo").style.display = 'block';
+    }
 });
 
 

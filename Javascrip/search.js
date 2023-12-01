@@ -2,7 +2,10 @@ app
 app.controller("SearchUser", function ($scope, $http) {
     $scope.searchsp=[];
    
-
+    $scope.number_sales = function(product) {
+      return ((product.gia - product.giaGiam) / product.gia) * 100;
+    
+    };
     $scope.searchuser =JSON.parse (localStorage.getItem('searh_fr'))
     $scope.timkiemsp = function() {
 
@@ -34,7 +37,7 @@ app.controller("SearchUser", function ($scope, $http) {
     //   alert("Nhập thông tin tìm kiếm")
     // }
    }
-
+   $scope.timkiemsp()
    
     /// phân trang
     function updatePagination(maloaisp) {

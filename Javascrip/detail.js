@@ -6,7 +6,7 @@ app
 app.controller("Detail", function ($scope, $http, ) {
   $scope.listdetail=[];
   $scope.detailitem=[] ;
-  $scope.giacart=0;
+  
   $scope.numbersp = 1;
   $scope.list = [];
   // var urlObject ='';
@@ -21,7 +21,15 @@ app.controller("Detail", function ($scope, $http, ) {
       url: `https://localhost:7165/api/SanPham/get-id/${$scope.id}`,
     }).then(function (response) {
       $scope.listdetail = response.data;
-
+      if($scope.listdetail.giaGiam !=0){
+        $scope.giacart=0;
+        $scope.giacart =$scope.listdetail.giaGiam
+      }
+      else{
+        $scope.giacart=0;
+        $scope.giacart =$scope.listdetail.gia
+      }
+      localStorage.setItem('sanpham',0)
       localStorage.setItem('sanpham',JSON.stringify($scope.listdetail))
       $http({
         method: "GET",
@@ -46,18 +54,14 @@ app.controller("Detail", function ($scope, $http, ) {
   $scope.Detail();
 
 
-  
+  $scope.number_sales = function(product) {
+    return ((product.gia - product.giaGiam) / product.gia) * 100;
+   
+  };
 
 
 
   // lấy giá của sản phẩm 
-  if(JSON.parse(localStorage.getItem('sanpham')).giaGiam !=0){
-    $scope.giacart =JSON.parse(localStorage.getItem('sanpham')).giaGiam
-  }
-  else{
-    $scope.giacart =JSON.parse(localStorage.getItem('sanpham')).gia
-    
-  }
   $scope.Totallist = function() {
     $scope.totallist = 0; 
     for (var i = 0; i < $scope.list.length; i++) {
@@ -79,66 +83,74 @@ $scope.sum=0
 var customerId= 0;
 customerId = JSON.parse(localStorage.getItem('newcart'))[0].maTaiKhoan;
 $scope.listCart = function () {
+  
 
-  var data = {
-      maSanPham: JSON.parse(localStorage.getItem('sanpham')).maSanPham,
-      tenSanPham: JSON.parse(localStorage.getItem('sanpham')).tenSanPham,
-      anhDaiDien: JSON.parse(localStorage.getItem('sanpham')).anhDaiDien,
-      soLuong: $scope.numbersp,
-      gia: $scope.giacart
+  
+    var data = {
+        maSanPham: JSON.parse(localStorage.getItem('sanpham')).maSanPham,
+        tenSanPham: JSON.parse(localStorage.getItem('sanpham')).tenSanPham,
+        anhDaiDien: JSON.parse(localStorage.getItem('sanpham')).anhDaiDien,
+        soLuong: $scope.numbersp,
+        gia: $scope.giacart
+    };
+  
+    console.log(data)
+      updateCart(customerId, data);
+  }
+ 
+
+  
+  
+  
+  // Hàm lưu thông tin giỏ hàng vào Local Storage
+  $scope.saveCart = function (customerId, cart) {
+    var cartKey = "cartItem_" + customerId;
+    localStorage.setItem(cartKey, JSON.stringify(cart));
   };
-
-    updateCart(customerId, data);
-};
-
-
-
-// Hàm lưu thông tin giỏ hàng vào Local Storage
-$scope.saveCart = function (customerId, cart) {
-  var cartKey = "cartItem_" + customerId;
-  localStorage.setItem(cartKey, JSON.stringify(cart));
-};
-
-
-// Hàm tìm kiếm một sản phẩm trong giỏ hàng
-function findCartItem(cart, productId) {
-  for (var i = 0; i < cart.length; i++) {
-      if (cart[i].maSanPham === productId) {
-          return cart[i];
-      }
-  }
-  return null;
-}
-
-// Hàm cập nhật giỏ hàng
-function updateCart(customerId, data) {
-  var cartItems = JSON.parse(localStorage.getItem('cartItem_' + customerId)) || [];
-
-  if (!Array.isArray(cartItems)) {
-      cartItems = [];
-  }
-
-  var existingItem = findCartItem(cartItems, data.maSanPham);
-
-  if (existingItem) {
-      existingItem.soLuong += data.soLuong;
-  } else {
-      cartItems.push(data);
-  }
-    
-    // alert('Thêm thành công');
-    localStorage.setItem('cartItem_' + customerId, JSON.stringify(cartItems));
-    $scope.list = cartItems;
-      alert('Thêm thành công');
-      console.log($scope.list);
-    
-      
-
-    if (localStorage.getItem('cartItem_' + customerId)) {
-      $scope.list = [];
-      $scope.list = JSON.parse(localStorage.getItem('cartItem_' + customerId));
-    
+  
+  
+  // Hàm tìm kiếm một sản phẩm trong giỏ hàng
+  function findCartItem(cart, productId) {
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].maSanPham === productId) {
+            return cart[i];
+        }
     }
+    return null;
+  }
+  
+  // Hàm cập nhật giỏ hàng
+  function updateCart(customerId, data) {
+    var cartItems = JSON.parse(localStorage.getItem('cartItem_' + customerId)) || [];
+  
+    if (!Array.isArray(cartItems)) {
+        cartItems = [];
+    }
+  
+    var existingItem = findCartItem(cartItems, data.maSanPham);
+  
+    if (existingItem) {
+        existingItem.soLuong += data.soLuong;
+    } 
+    else {
+        cartItems.push(data);
+    }
+      
+      // alert('Thêm thành công');
+      localStorage.setItem('cartItem_' + customerId, JSON.stringify(cartItems));
+      $scope.list = cartItems;
+        alert('Thêm thành công');
+        console.log($scope.list);
+      
+        
+  
+      if (localStorage.getItem('cartItem_' + customerId)) {
+        $scope.list = [];
+        $scope.list = JSON.parse(localStorage.getItem('cartItem_' + customerId));
+      
+      }
+
+ 
 }
 
 // hiển thị thông tin sau khi load lại trang
@@ -153,6 +165,7 @@ function updateCart(customerId, data) {
     $scope.sum = parsedCartItems.length;
   
   }
+  
 
 
 
@@ -181,16 +194,6 @@ $scope.calculateTotal = function(item) {
 return item.soLuong * item.gia;
 };
 
-// tính tổng tiền tất cả các sản phẩm
-// $scope.totalAllProducts = 0;
-// $scope.calculateTotalAllProducts = function() {
-// $scope.totalAllProducts = 0;
-// for (var i = 0; i < $scope.list.length; i++) {
-//     $scope.totalAllProducts += $scope.calculateTotal($scope.list[i]);
-// }
-// };
-
-
 // update lại khi thay đổi số lượng
 $scope.updateQuantity = function(item, newQuantity) {
 // Tìm vị trí của sản phẩm trong danh sách
@@ -217,20 +220,25 @@ angular.forEach($scope.list, function (item) {
 return total;
 };
 
+
+
+
 // lấy thông tin sản phẩm khki được checkbox
 $scope.selectedItems=[];
 $scope.toggleSelection = function(item) {
   if (item.isSelected) {
       $scope.selectedItems.push(item);
       // console.log($scope.selectedItems)
+      localStorage.setItem('productbill', JSON.stringify($scope.selectedItems));
   } else {
       var index = $scope.selectedItems.indexOf(item);
       if (index !== -1) {
           $scope.selectedItems.splice(index, 1);
       }
+      localStorage.setItem('productbill', JSON.stringify($scope.selectedItems));
   }
-  localStorage.setItem('productbill', JSON.stringify($scope.selectedItems));
-  console.log(localStorage.getItem('productbill'))
-};
+  // localStorage.setItem('productbill', JSON.stringify($scope.selectedItems));
+ 
+  };
 });
 

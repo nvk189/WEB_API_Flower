@@ -187,8 +187,6 @@ $scope.suasp = function() {
 
 // xoa
 $scope.xoasp = function() {
-  
-
   var alertdelete = window.confirm("Bạn có chắc chắn muốn xóa sản phẩm không?");
   if(alertdelete){
     $http({
@@ -239,6 +237,11 @@ $scope.timkiemsp = function() {
 }
 
 
+/// link ảnh 
+  // var anhDaiDien = document.getElementById("AnhDaiDien");
+  // var image = document.getElementById('viewimg');
+  // var newImagePath = "./assets/img/Product/Đèn chùm/" + anhDaiDien.value.split("\\").pop();
+  // image.src = newImagePath;
 
   /// phần trang tương ứng cho ds
   function updatePagination(maloaisp) {

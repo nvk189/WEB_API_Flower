@@ -5,6 +5,8 @@ app.controller("BillOut", function ($scope, $http) {
     $scope.Ban =[];
     $scope.products=[];
     $scope.createBan=[];
+    
+
     $scope.p=[];
 
     $scope.GetBan = function () {
@@ -13,7 +15,7 @@ app.controller("BillOut", function ($scope, $http) {
           url: current_url + "/api/HoaDon/get-all",
         }).then(function (response) {
           $scope.Ban = response.data;
-          console.log($scope.Ban)
+          // console.log($scope.Ban)
           updatePagination($scope.Ban)
           countOrdersToday($scope.Ban)
 
@@ -96,6 +98,7 @@ app.controller("BillOut", function ($scope, $http) {
           alert('Nhập thông tin tìm kiếm')
         }
       }  
+     
 $scope.load = function(selectedItem){
     $scope.list=[];
     $scope.mahdb =selectedItem.maDonHang,

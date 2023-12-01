@@ -1,12 +1,15 @@
 app 
 app.controller("BillCtrl", function ($scope, $http) {
 $scope.Bill=[]
+$scope.datadh = [];
 $scope.totalbill=0;
 $scope.listBill=[];
+$scope.BillOne =[];
 var selectproduct = localStorage.getItem('productbill');
+var product = localStorage.getItem('sanpham');
+// $scope.listBill = JSON.parse(selectproduct) 
+// $scope.BillOne =JSON.parse(product);
 
-$scope.listBill = JSON.parse(selectproduct) 
-console.log($scope.listBill)  // console.log(selectproduct[0].tenSanPham)
 
 // xóa 
 $scope.removeProduct = function(index) {
@@ -15,32 +18,37 @@ $scope.removeProduct = function(index) {
     // Cập nhật local storage sau khi thực hiện xóa
     localStorage.setItem('productbill', JSON.stringify($scope.listBill));
 
-    // Cập nhật $scope.Bill (nếu cần)
-    $scope.Bill = angular.copy($scope.listBill);
+    // // Cập nhật $scope.Bill (nếu cần)
+    // $scope.Bill = angular.copy($scope.listBill);
     TotalBill()
     };
-// Kiểm tra xem có dữ liệu trong local storage không
-if (selectproduct) {
-   
-   
+console.log(selectproduct)
+console.log(product)
 
-    
+if (selectproduct) {
+    $scope.Bill =[]
+    $scope.listBill = JSON.parse(selectproduct) 
     $scope.listBill.forEach(function(item) {
         $scope.Bill.push({
             maSanPham: item.maSanPham,
             soLuong: item.soLuong,
             gia: item.gia
         });
-    });
-    console.log($scope.Bill)
-} else {
-    // Nếu không có dữ liệu trong local storage, thêm giá trị mặc định vào $scope.products
-    $scope.Bill.push({
-        maSanPham: "",
-        soLuong: 0,
-        gia: 0
+        console.log($scope.listBill)
     });
 }
+    
+else{
+    alert("Chọn sản phẩm trong giỏ hàng ")
+}
+
+$scope.Bill.map(function(item) {
+    $scope.datadh.push({
+       
+        maSP: item.maSanPham,
+       
+    });
+});
 
 // hàm tính tổng tiền
 function TotalBill() {
@@ -56,12 +64,9 @@ $scope.totalbill = TotalBill();
 console.log($scope.totalbill)
 
 
-
-// hàm thêm hóa đơn từ giỏ hàng
-// $scope.them =function(){
-
-// }
 $scope.user =JSON.parse (localStorage.getItem('newcart'))
+$scope.matk= $scope.user[0].maTaiKhoan
+
 $scope.hoten= $scope.user[0].hoTen
 $scope.email= $scope.user[0].email
 $scope.dienthoai= $scope.user[0].dienThoai
@@ -88,15 +93,24 @@ $scope.them = function(){
     .then(function(response) {
       $scope.createBan = response.data;
     //   console.log($scope.createBan)
-      
+        var datadh ={
+            maDH: 0,
+            maTk: $scope.matk,
+            list_json_chitietdonhang:$scope.datadh
+        }
+
+        console.log(datadh)
+        $http({
+            method: 'POST',
+            url: current_url_use + "/api/DonHang/create-hoadon",
+            data: JSON.stringify(datadh),
+        })
+        .then(function(response) {
+          $scope.DonHang = response.data;
+          console.log($scope.DonHang)
+        })
       alert('Đặt hàng thành công')
-      window.location.href="/html/Home.html"
-    
-     
-    })
-    // .catch(function(error) {
-    //     window.alert('Thông tin không hợp lệ yêu cầu nhập lại ')
-    //     console.error('Error:', error);
-    // });
+    //   window.location.href="/html/Home.html"
+    });
     }  
 })

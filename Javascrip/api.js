@@ -6,6 +6,7 @@ app.controller("HomeCtrl", function ($scope, $http) {
   $scope.product1 = [];
   $scope.listItemhot=[];
   $scope.listItemNew=[];
+  $scope.number_sales=[];
  
   $scope.click = function (){
 
@@ -19,6 +20,11 @@ app.controller("HomeCtrl", function ($scope, $http) {
     }).then(function (response) {
       console.log(response.data);
       $scope.listItem = response.data;
+
+      for (var i = 0; i < $scope.listItem.length; i++) {
+        $scope.number_sales[i] = ($scope.listItem[i].gia - $scope.listItem[i].giaGiam)/ $scope.listItem[i].gia * 100;
+      }
+      console.log($scope.number_sales);
     });
   };
   $scope.GetBanChay();
@@ -43,7 +49,7 @@ app.controller("HomeCtrl", function ($scope, $http) {
   $scope.GetNew = function () {
     $http({
       method: "GET",
-      url: current_url + "/api/ThongKe/sanphamthongke?id=3",
+      url: current_url + "/api/ThongKe/sanphamthongke?id=1",
     }).then(function (response) {
       console.log(response.data);
       $scope.listItemNew = response.data;
@@ -52,7 +58,10 @@ app.controller("HomeCtrl", function ($scope, $http) {
   $scope.GetNew();
 
 
-
+  $scope.number_sales = function(product) {
+    return ((product.gia - product.giaGiam) / product.gia) * 100;
+   
+  };
   $scope.checkPriceSale = function(giaGiam) {
     return giaGiam !== 0;
 };

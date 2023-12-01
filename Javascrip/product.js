@@ -56,4 +56,9 @@ app.controller("ListCtrl", function ($scope, $http) {
     $scope.getData();
   }
 
+
+  $scope.number_sales = function(product) {
+    return ((product.gia - product.giaGiam) / product.gia) * 100;
+   
+  };
 })

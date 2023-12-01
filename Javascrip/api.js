@@ -25,6 +25,7 @@ app.controller("HomeCtrl", function ($scope, $http) {
         $scope.number_sales[i] = ($scope.listItem[i].gia - $scope.listItem[i].giaGiam)/ $scope.listItem[i].gia * 100;
       }
       console.log($scope.number_sales);
+      console.log($scope.listItem);
     });
   };
   $scope.GetBanChay();

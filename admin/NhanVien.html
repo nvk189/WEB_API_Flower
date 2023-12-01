@@ -37,12 +37,11 @@
                 <button onclick="SanPham()"><i class="fas fa-barcode"></i> Sản phẩm</button>
                 <button onclick="NhaCungCap()"><i class="fas fa-truck"></i> Nhà cung cấp</button>
                 <button onclick="KhachHang()"><i class="fas fa-users"></i> Khách hàng</button>
-                <button class="active" onclick="NhanVien()"><i class="fas fa-user"></i> Nhân viên</button>
+                <button class="active" onclick="NhanVien()"><i class="fas fa-user"></i> Tài khoản</button>
                 <button onclick="HoaDonNhap()"><i class="fas fa-file-import"></i> Hóa đơn nhập</button>
                 <button onclick="HoaDonBan()"><i class="fas fa-shopping-cart"></i> Hóa đơn bán</button>
                 <button onclick="ThongKe()"><i class="fas fa-shopping-cart"></i> Thống kê</button>
                 <button onclick="TinTuc()"><i class="fas fa-newspaper"></i> Tin tức</button>
-                <!-- <button onclick="ThietLap()"><i class="fas fa-cogs"></i> Thiết lập</button> -->
             </div>
             <div class="bx-left" id="button-left">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeBTN()"><i
@@ -53,19 +52,18 @@
                     <li onclick="SanPham()"><i class="fas fa-barcode"></i> Sản phẩm</li>
                     <li onclick="NhaCungCap()"><i class="fas fa-truck"></i> Nhà cung cấp</li>
                     <li onclick="KhachHang()"><i class="fas fa-users"></i> Khách hàng</li>
-                    <li onclick="NhanVien()"><i class="fas fa-user"></i> Nhân viên</li>
+                    <li onclick="NhanVien()"><i class="fas fa-user"></i> Tài khoản</li>
                     <li onclick="HoaDonNhap()"><i class="fas fa-file-import"></i> Hóa đơn nhập</li>
                     <li onclick="HoaDonBan()"><i class="fas fa-shopping-cart"></i> Hóa đơn bán</li>
                     <li onclick="ThongKe()"><i class="fas fa-shopping-cart"></i> Thống kê</li>
                     <li onclick="TinTuc()"><i class="fas fa-newspaper"></i> Tin tức</li>
-                    <li onclick="ThietLap()"><i class="fas fa-cogs"></i> Thiết lập</li>
                 </ul>
             </div>
             <div class="col-11 col-s-12 content">
                 <div class="col-4 col-s-12 content">
                     <div class="tabcontent">
                         <div class="title">
-                            <i class="fas fa-user"></i> Nhập thông tin nhân viên
+                            <i class="fas fa-user"></i> Nhập thông tin Tài khoản
                             <hr>
                         </div>
                         <div class="row">
@@ -96,7 +94,7 @@
                                     <select  ng-model="level" name="quyen1" id="chucvu" ng-change="levelChanged()">
                                         <option value="choose">--Chọn chức vụ--</option>
                                         <option value="1">Khách hàng</option>
-                                        <option value="2">Nhân viên</option>
+                                        <option value="2">Tài khoản</option>
                                         <option value="3">Quản lý</option>
                                     </select>
                                 </div>
@@ -142,7 +140,7 @@
                         </div>
                         <hr>
                         <!-- <button class="btn-form" style="background-color: rgba(44, 140, 15, 0.8);"
-                            onclick="ThemNhanVien()">Thêm nhân viên</button> -->
+                            onclick="ThemNhanVien()">Thêm Tài khoản</button> -->
                         <button class="btn-form" style="background-color: rgba(227, 32, 21, 0.8);"
                             ng-click="LamMoi()">Nhập mới</button>
                         <button class="btn-form" style="background-color: rgba(14, 87, 224, 0.8);" id="btnUpdate"
@@ -152,7 +150,7 @@
                 <div class="col-8 col-s-12 content">
                     <div class="tabcontent">
                         <div class="title">
-                            <i class="fas fa-user"></i> Danh sách nhân viên
+                            <i class="fas fa-user"></i> Danh sách Tài khoản
                             <button onclick="XoaChon()" style="margin-right: 3px;"><i class="far fa-trash-alt"></i> Xóa
                                 chọn</button>
                             <hr>
@@ -204,7 +202,7 @@
                             <div class="col-12 col-s-12 padding-box">
                                 <div class="box-sum">
                                     <div class="box-left">
-                                        Số lượng nhân viên: <span id="soluong">{{about}}</span>
+                                        Số lượng Tài khoản: <span id="soluong">{{about}}</span>
                                     </div>
                                     <div class="box-right">
                                         <button ng-click="prevPage()"><i class="fas fa-angle-left"></i></button>
@@ -244,27 +242,27 @@
                     manv = Number(d);
                 }
                 else if (!manv.match(number) || manv.length != 13) {
-                    alert("Mã nhân viên phải là kiểu số và có độ dài là 13 ký tự! Vui lòng nhập lại!");
+                    alert("Mã Tài khoản phải là kiểu số và có độ dài là 13 ký tự! Vui lòng nhập lại!");
                     return false;
                 }
 
                 // if (tennv == null || tennv == "") {
-                //     alert("Tên nhân viên không được để trống! Vui lòng nhập lại!");
+                //     alert("Tên Tài khoản không được để trống! Vui lòng nhập lại!");
                 //     return false;
                 // }
                 // else if (emailnv == null || emailnv == "") {
-                //     alert("Email nhân viên không được để trống! Vui lòng nhập lại!");
+                //     alert("Email Tài khoản không được để trống! Vui lòng nhập lại!");
                 //     return false;
                 // }
                 // else if (atposition < 1 || dotposition < (atposition + 2) || (dotposition + 2) >= emailnv.length) {
-                //     alert("Email nhân viên không hợp lệ! Vui lòng nhập lại!");
+                //     alert("Email Tài khoản không hợp lệ! Vui lòng nhập lại!");
                 //     return false;
                 // }
                 // else if (sdtnv == null || sdtnv == "") {
-                //     alert("Số điện thoại nhân viên không được để trống! Vui lòng nhập lại!");
+                //     alert("Số điện thoại Tài khoản không được để trống! Vui lòng nhập lại!");
                 //     return false;
                 // } else if (!sdtnv.match(number) || sdtnv.length != 10) {
-                //     alert("Số điện thoại nhân viên phải là kiểu số và có độ dài là 10 ký tự! Vui lòng nhập lại!");
+                //     alert("Số điện thoại Tài khoản phải là kiểu số và có độ dài là 10 ký tự! Vui lòng nhập lại!");
                 //     return false;
                 // }
                 // else if (quyen == "choose") {
@@ -276,13 +274,13 @@
                 //     return false;
                 // }
                 // else if (mknv == null || mknv == "") {
-                //     alert("Mật khẩu nhân viên không được để trống! Vui lòng nhập lại!");
+                //     alert("Mật khẩu Tài khoản không được để trống! Vui lòng nhập lại!");
                 //     return false;
                 // }
                 // else {
                 //     for (var x of list) {
                 //         if (x.manv == manv) {
-                //             alert("Mã nhân viên đã tồn tại! Vui lòng nhập lại!")
+                //             alert("Mã Tài khoản đã tồn tại! Vui lòng nhập lại!")
                 //             return false;
                 //         }
                 //     }
@@ -405,27 +403,27 @@
                     manv = Number(d);
                 }
                 else if (!manv.match(number) || manv.length != 13) {
-                    alert("Mã nhân viên phải là kiểu số và có độ dài là 13 ký tự! Vui lòng nhập lại!");
+                    alert("Mã Tài khoản phải là kiểu số và có độ dài là 13 ký tự! Vui lòng nhập lại!");
                     return false;
                 }
 
                 if (tennv == null || tennv == "") {
-                    alert("Tên nhân viên không được để trống! Vui lòng nhập lại!");
+                    alert("Tên Tài khoản không được để trống! Vui lòng nhập lại!");
                     return false;
                 }
                 else if (emailnv == null || emailnv == "") {
-                    alert("Email nhân viên không được để trống! Vui lòng nhập lại!");
+                    alert("Email Tài khoản không được để trống! Vui lòng nhập lại!");
                     return false;
                 }
                 else if (atposition < 1 || dotposition < (atposition + 2) || (dotposition + 2) >= emailnv.length) {
-                    alert("Email nhân viên không hợp lệ! Vui lòng nhập lại!");
+                    alert("Email Tài khoản không hợp lệ! Vui lòng nhập lại!");
                     return false;
                 }
                 else if (sdtnv == null || sdtnv == "") {
-                    alert("Số điện thoại nhân viên không được để trống! Vui lòng nhập lại!");
+                    alert("Số điện thoại Tài khoản không được để trống! Vui lòng nhập lại!");
                     return false;
                 } else if (!sdtnv.match(number) || sdtnv.length != 10) {
-                    alert("Số điện thoại nhân viên phải là kiểu số và có độ dài là 10 ký tự! Vui lòng nhập lại!");
+                    alert("Số điện thoại Tài khoản phải là kiểu số và có độ dài là 10 ký tự! Vui lòng nhập lại!");
                     return false;
                 }
                 else if (quyen == "choose") {
@@ -437,7 +435,7 @@
                     return false;
                 }
                 else if (mknv == null || mknv == "") {
-                    alert("Mật khẩu nhân viên không được để trống! Vui lòng nhập lại!");
+                    alert("Mật khẩu Tài khoản không được để trống! Vui lòng nhập lại!");
                     return false;
                 }
 

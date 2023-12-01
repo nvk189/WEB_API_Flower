@@ -1,0 +1,130 @@
+<html>
+
+<head>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        body {
+            width: 900px;
+            margin: 0 auto;
+        }
+
+        tr {
+            line-height: 27px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .ngay {
+            font-style: italic;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .ban {
+            font-style: italic;
+            font-size: 15px;
+            margin: 3px 0px;
+        }
+
+        .dam {
+            font-weight: bold;
+        }
+
+        .le {
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+
+        .doi {
+            width: 50%;
+            float: left;
+        }
+
+        .ky {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .ky1 {
+            font-style: italic;
+            text-align: center;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body ng-app="AppBanHoa" ng-controller="BillOut" onload="window.print()">
+    <section style="text-align: center;">
+        <h1>HÓA ĐƠN GIÁ TRỊ GIA TĂNG</h1>
+        <div class="ban">(Bản thể hiện hóa đơn điện tử)</div>
+        <div class="ngay">
+            <p id="date"></p>
+            <script>
+                n = new Date();
+                y = n.getFullYear();
+                m = n.getMonth() + 1;
+                d = n.getDate();
+                document.getElementById("date").innerHTML = "Ngày " + d + " tháng " + m + " năm " + y;
+            </script>
+        </div>
+    </section>
+
+    <div class="le dam">Tên đơn vị bán hàng: Nguyễn Chiến Computer</div>
+    <div class="le">Mã số thuế: 3269289058</div>
+    <div class="le">Địa chỉ: 195 Nguyễn Chế Nghĩa, Gia Lộc, Hải Dương</div>
+    <div class="le doi">Điện thoại: 0948.098.195</div>
+    <div class="le doi">Số tài khoản: 762618652671614</div>
+    <div class="le dam">Người mua hàng: {{tenkh}}</div>
+    <div class="le">Điện thoại: {{sodt}}</div>
+    <div class="le">Địa chỉ: {{diachi}}</div>
+    <div class="le doi">Hình thức thanh toán: Tiền mặt / Chuyển khoản</div>
+    <div class="le doi">Số tài khoản: 526716147626186</div>
+    <div class="le">Ghi chú: </div>
+    <table>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+        </tr>
+        <tr ng-repeat="x in list">
+            <td ng-model="x.maSanPham"></td>
+            <td>Mắt hàng 1</td>
+            <td  ng-model="x.soLuong"></td>
+            <td ng-model="x.gia"></td>
+        </tr>
+       
+        <tr>
+            <td></td>
+            <td class="dam">Tổng</td>
+            <td class="dam">2</td>
+            <td class="dam"><label id="tien">{{tongtien}}</label></td>
+        </tr>
+    </table>
+    <div class="doi dam ky">Người mua hàng</div>
+    <div class="doi dam ky">Người bán hàng</div>
+    <div class="doi ky1">(Ký, ghi rõ họ tên)</div>
+    <div class="doi ky1">(Ký, ghi rõ họ tên)</div>
+	
+</body>
+<script src="/Javascrip/angular.min.js"></script>
+<script src="/Javascrip/global.js"></script>
+<script src="/js/BillOut.js"></script>
+
+</html>

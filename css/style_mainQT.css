@@ -514,3 +514,41 @@ textarea {
     width: 100%;
     border-radius: 3px;
 }
+.table_chitiet {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Khoảng cách từ đỉnh trang đến bảng (có thể điều chỉnh) */
+}
+
+.table_chitiet th, .table_chitiet td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table_chitiet th {
+    background-color: #f2f2f2; /* Màu nền cho hàng tiêu đề */
+}
+
+#DSSanPham tr {
+    display: table-row;
+}
+
+#DSSanPham td {
+    display: table-cell;
+    padding: 5px; /* Khoảng cách giữa nội dung và đường biên của ô (có thể điều chỉnh) */
+    border: 1px solid #ddd; /* Đường biên ô */
+}
+
+#DSSanPham input {
+    border-color: #fff;
+    border: none;
+    width: 100%; /* 100% chiều rộng của input bên trong ô */
+    box-sizing: border-box; /* Bảo toàn chiều rộng cho input kể cả border và padding */
+}
+
+#DSSanPham button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

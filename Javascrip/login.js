@@ -19,17 +19,13 @@ app.controller("LoginCtrl", function ($scope, $http) {
             localStorage.setItem('newcart', JSON.stringify($scope.loginData.chitiet))
             console.log(localStorage.getItem('newcart'))
            
-            // var customerId= 0;
-            // customerId = JSON.parse(localStorage.getItem('newcart'))[0].maTaiKhoan;
+          
 
             if($scope.loginData.maloaitk ===1){
 
                 window.location.href = '/html/Home.html';
-                // console.log('a')
-                // document.getElementById("home").style.display='none'
-                // document.getElementById("home_user").style.display = 'none';
-                document.getElementById("Cartsum").style.display = 'block';
-                document.getElementById("CartZezo").style.display = 'none';
+      
+               
             }
             else if($scope.loginData.maloaitk ===2){
                 

@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/detail.css">
     <link rel="stylesheet" href="/assets/css/responsive.css">
-  
+    <script src="/Javascrip/home.js"> </script> 
+     <script src="/Javascrip/angular.min.js"></script>
+     <script src="/Javascrip/global.js"></script>
+     <script src="/Javascrip/detail.js"></script>
+     <script src="/Javascrip/api.js"></script>
+     <script src="/Javascrip/login.js"></script>
 
 </head>
 <body ng-app="AppBanHoa" >
@@ -35,11 +40,17 @@
             <div class="nav float-end">
                 <ul class="list-inline">
                     <li class="list-inline-item list-item-login">
-                         <div class="dropdown">
-                            <a href="" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
-                            <ul class="menu-login">
+                        <div class="dropdown" ng-controller="LoginCtrl">
+                            <a href="./account.html" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
+                            <!-- <ul id="home" class="menu-login">
                                 <li><a href="/html/Sign.html" class="dropdown-item">Đăng ký</a></li>
                                 <li><a href="/html/login.html" class="dropdown-item">Đăng nhập</a></li>
+                               
+                             </ul> -->
+                            <ul   id="home_user" class="menu-login " >
+                                <li><a href="/html/account.html" class="dropdown-item">Tài Khoản</a></li>
+                                <li><a href="/html/login.html" class="dropdown-item">Lịch sử đơn hàng</a></li>
+                                <li ng-click="sign()"><a href="" class="dropdown-item">Đăng xuất</a></li>
                              </ul>
                         </div>
                     </li>
@@ -140,7 +151,9 @@
                                         </div>
                                     </li>
                                 </ul>
+                                
                             </div>
+                            
                         </div>
                         
                     </div>
@@ -244,9 +257,11 @@
                         <div class="detail-price-content">
 
                             <h3 class="detail-name"> {{listdetail.tenSanPham}}</h3>
-                            <!-- <h4 class="detail-money-sale">360,000 VND</h4> -->
-                            <!-- <h4 class="detail-money">{{listdetail.giGiam}}</h4> -->
-                            <h4 class="detail-money">{{listdetail.gia}} <span>VND</span></h4> 
+                           <div class="detail-money" style="display: flex;">
+
+                               <h4 class="detail-moneys">{{listdetail.giaGiam}}<span>VND</span></h4>
+                               <h4 class="detail-moneys" style="text-decoration: line-through;color: #000;opacity: 0.6; padding-left: 15px; font-weight: 200;">{{listdetail.gia}} <span>VND</span></h4> 
+                           </div>
 
                         </div>
 
@@ -327,9 +342,9 @@
                         <i class="tag-ship"> Phí giao hàng miễn phí khu vực Hà Nội và TP.Hồ Chí Minh</i>
                         <!-- <span class="text-Qty"> Số lượng</span> -->
                         <div class="btn" style="margin-top: 30px;">
-                            <input  ng-model="numbersp"   type="number" placeholder="Số lượng" class="number-item" value="1" style="text-align: center; width: 80px;">
-                            <button class="order order-color1"> <a href="/html/Bill.html" style="text-decoration: none;">Đặt hàng</a></button>
-                            <button  ng-click="listCart()" class="order order-color2">Thêm vào giỏ hàng  </button>
+                            <input  ng-model="numbersp"   type="number" placeholder="Số lượng" class="number-item" min="1" value="1" style="text-align: center; width: 80px;">
+                            <button ng-click="listCart()" class="order order-color1" ng-click="billclick()"> <a href="./Cart.html" style="text-decoration: none; color: #fff;">Đặt hàng</a></button>
+                            <!-- <button  ng-click="listCart()" class="order order-color2">Thêm vào giỏ hàng  </button> -->
 
                         </div>
 
@@ -383,6 +398,9 @@
                                   Đặt hàng
                                 </a>
                                
+                            </div>
+                            <div class="number_sales" >
+                                {{number_sales(x)| number:0}}%
                             </div>
                         </div>
                     </div>
@@ -575,11 +593,7 @@
         </a>
         
     </div>
-     <script src="/Javascrip/home.js"> </script> 
-     <script src="/Javascrip/angular.min.js"></script>
-     <script src="/Javascrip/global.js"></script>
-     <script src="/Javascrip/detail.js"></script>
-     <script src="/Javascrip/api.js"></script>
+     
 
 
 </body>

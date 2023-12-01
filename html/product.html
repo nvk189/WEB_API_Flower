@@ -34,11 +34,17 @@
             <div class="nav float-end">
                 <ul class="list-inline">
                     <li class="list-inline-item list-item-login">
-                         <div class="dropdown">
-                            <a href="" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
-                            <ul class="menu-login">
-                                <li><a href="" class="dropdown-item">Đăng ký</a></li>
-                                <li><a href="" class="dropdown-item">Đăng nhập</a></li>
+                        <div class="dropdown" ng-controller="LoginCtrl">
+                            <a href="./account.html" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
+                            <!-- <ul id="home" class="menu-login">
+                                <li><a href="/html/Sign.html" class="dropdown-item">Đăng ký</a></li>
+                                <li><a href="/html/login.html" class="dropdown-item">Đăng nhập</a></li>
+                               
+                             </ul> -->
+                            <ul   id="home_user" class="menu-login " >
+                                <li><a href="/html/account.html" class="dropdown-item">Tài Khoản</a></li>
+                                <li><a href="/html/login.html" class="dropdown-item">Lịch sử đơn hàng</a></li>
+                                <li ng-click="sign()"><a href="" class="dropdown-item">Đăng xuất</a></li>
                              </ul>
                         </div>
                     </li>
@@ -270,6 +276,10 @@
                                     </a>
                                    
                                 </div>
+                                <div class="number_sales" >
+                                   
+                                        {{number_sales(x)| number:0}}%
+                                 </div>
                             </div>
                         </div>
                             
@@ -278,9 +288,9 @@
                 </div>
                 <div class="box-right">
                     <!-- <p>trang số {{pages}}</p> -->
-                    <button style="margin: 0 3px; border-color: #ccc; padding: 5px 2px; background-color: #e91e63;" ng-click="prevPage()"><i class="fas fa-angle-left"></i></button>
-                    <button style="margin: 0 3px; border-color: #ccc; padding: 5px 10px; background-color: #e91e63;" style="margin: 0 2px;" ng-repeat="page in pages" ng-click="setPage(page)">{{ page }} </button>
-                    <button style="margin: 0 3px; border-color: #ccc; padding: 5px 2px; background-color: #e91e63;" ng-click="nextPage()"><i class="fas fa-angle-right"></i></button>
+                    <button style="background-color: #fff; margin: 0 3px; border-color: #ccc; padding: 5px 8px; color: #ed6b87; " ng-click="prevPage()"><i class="fas fa-angle-left"></i></button>
+                    <button style="background-color: #fff; margin: 0 3px; border-color: #ccc; padding: 5px 10px; color: #ed6b87;"  ng-repeat="page in pages" ng-click="setPage(page)">{{ page }} </button>
+                    <button style="background-color: #fff; margin: 0 3px; border-color: #ccc; padding: 5px 8px; color: #ed6b87;" ng-click="nextPage()"><i class="fas fa-angle-right"></i></button>
                 </div>
             </div>
         </div>
@@ -475,6 +485,7 @@
     <script src="/Javascrip/product.js"></script>
     <script src="/Javascrip/detail.js"></script>
     <script src="/Javascrip/api.js"></script>
+    <script src="/Javascrip/login.js"></script>
 
 </body>
 </html>

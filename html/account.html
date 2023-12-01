@@ -15,6 +15,7 @@
     <script src="/Javascrip/detail.js"></script>
     <script src="/Javascrip/api.js"></script>
     <script src="/Javascrip/tkuser.js"></script>
+    <script src="/Javascrip/login.js"></script>
 </head >
 <body  ng-app="AppBanHoa">
     <!-- header -->
@@ -38,11 +39,17 @@
             <div class="nav float-end">
                 <ul class="list-inline">
                     <li class="list-inline-item list-item-login">
-                         <div class="dropdown">
-                            <a href="" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
-                            <ul class="menu-login">
-                                <li><a href="" class="dropdown-item">Đăng ký</a></li>
+                        <div class="dropdown" ng-controller="LoginCtrl">
+                            <a href="./account.html" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i> <span class="d-none d-md-inline">Tài khoản</span> <i class="fa-solid fa-caret-down"></i></a>
+                            <!-- <ul id="home" class="menu-login">
+                                <li><a href="/html/Sign.html" class="dropdown-item">Đăng ký</a></li>
                                 <li><a href="/html/login.html" class="dropdown-item">Đăng nhập</a></li>
+                               
+                             </ul> -->
+                            <ul   id="home_user" class="menu-login " >
+                                <li><a href="/html/account.html" class="dropdown-item">Tài Khoản</a></li>
+                                <li><a href="/html/login.html" class="dropdown-item">Lịch sử đơn hàng</a></li>
+                                <li ng-click="sign()"><a href="" class="dropdown-item">Đăng xuất</a></li>
                              </ul>
                         </div>
                     </li>

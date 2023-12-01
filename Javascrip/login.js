@@ -16,6 +16,7 @@ app.controller("LoginCtrl", function ($scope, $http) {
         .then(function (response) {
             $scope.loginData = response.data;
             console.log($scope.loginData.maloaitk)
+            localStorage.setItem('matk',JSON.stringify($scope.loginData.maloaitk))
             localStorage.setItem('newcart', JSON.stringify($scope.loginData.chitiet))
             console.log(localStorage.getItem('newcart'))
            
@@ -48,6 +49,20 @@ app.controller("LoginCtrl", function ($scope, $http) {
         document.getElementById("home_user").style.display = 'none';
         document.getElementById("Cartsum").style.display = 'none';
         document.getElementById("CartZezo").style.display = 'block';
+    }
+
+    $scope.again=function(){
+        var matk = JSON.parse(localStorage.getItem('matk'))
+        if( matk ===3 ){
+            window.location.href ='/admin/TongQuan.html'
+        }
+        else if(matk ===2){
+            window.location.href = '/admin/TongQuanNV.html'
+        }
+        else if (matk===1){
+            window.location.href = '/html/Home.html';
+        }
+
     }
 });
 

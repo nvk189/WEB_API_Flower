@@ -43,19 +43,18 @@ app.controller("UserCtrl", function ($scope, $http) {
           
             var data = {
                 maTaiKhoan: $scope.user[0].maTaiKhoan,
-                tenDangNhap: 'string', // Replace with the actual value for tenDangNhap
+                tenDangNhap: 'string', 
                 matKhau: $scope.matkhau,
                 maLoaiTaiKhoan: 0,
                 trangThai: true,
                 list_json_chitiettaikhoan: [
                     {
                         maChiTietTaiKhoan: 0,
-                        // maTaiKhoan: $scope.user[0].maTaiKhoan,
                         maTaiKhoan: 0,
-                        hoTen: 'string', // Replace with the actual value for hoTen
-                        email: 'string', // Replace with the actual value for email
-                        dienThoai: 'string', // Replace with the actual value for dienThoai
-                        diaChi: 'string' // Replace with the actual value for diaChi
+                        hoTen: 'string', 
+                        email: 'string', 
+                        dienThoai: 'string', 
+                        diaChi: 'string' 
                     }
                 ],
                 model: 'null'
@@ -69,7 +68,7 @@ app.controller("UserCtrl", function ($scope, $http) {
             .then(function(response){
                 console.log(response.data)
                 alert("Cập nhật thành công")
-                window.location.href='./account.html'
+                // window.location.href='./account.html'
                 
             })
         }

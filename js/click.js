@@ -19,13 +19,16 @@ function LoadUser() {
 }
 
 function TTTaiKhoan() {
-    window.location.href = "../admin/TTTaiKhoan.html";
+    window.location.href = "../admin/admintk.html";
+}
+function TTMatKhau() {
+    window.location.href = "../admin/adminmk.html";
 }
 
-// function LogOut() {
-//     localStorage.setItem('user', null);
-//     window.location.href = "../admin/login.html";
-// }
+function LogOut() {
+    // localStorage.setItem('user', null);
+    window.location.href = "../html/login.html";
+}
 
 function TongQuan() {
     window.location.href = "../admin/TongQuan.html";

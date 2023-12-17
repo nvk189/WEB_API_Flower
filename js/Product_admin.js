@@ -54,12 +54,13 @@ $scope.NhapMoi = function(){
   document.getElementById('masanpham').value= ' ',
   document.getElementById('tensanpham').value= ' ',
   document.getElementById('imgproduct').value= ' ',
-  document.getElementById('viewimg').value= ' '
+  document.getElementById('viewimg').src= ' '
   document.getElementById('slsp').value= ' ',
   document.getElementById('giaban').value= ' ',
   document.getElementById('giagiam').value= ' ',
-  document.getElementById('dacbiet').value= 'choose '
   document.getElementById('mota').value= ' '
+  document.getElementById('dacbiet').value= 'choose '
+  document.getElementById('trangthai').value= 'true '
   
  }
 

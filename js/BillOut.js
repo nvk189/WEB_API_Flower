@@ -44,6 +44,7 @@ app.controller("BillOut", function ($scope, $http) {
         });
       };
 
+   
     // hàm xóa sản phẩm nhập
     $scope.removeProduct = function(index) {
     $scope.products.splice(index, 1);
@@ -114,15 +115,63 @@ $scope.load = function(selectedItem){
       $scope.trangthai = 'false'
     }
 
-    for (var i = 0; i < selectedItem.list_json_chitiethoadon.length; i++) {
+    // for (var i = 0; i < selectedItem.list_json_chitiethoadon.length; i++) {
 
       
-      $scope.list[i]= selectedItem.list_json_chitiethoadon[i]
+    //   $scope.list[i]= selectedItem.list_json_chitiethoadon[i]
+      
+    // }
+    for (var i = 0; i < selectedItem.list_json_chitiethoadon.length; i++) {
+      $scope.list[i] = selectedItem.list_json_chitiethoadon[i];
     }
-   
+    
+    $scope.listdetail = [];  // Initialize listdetail as an empty array
+    
+    $scope.Detail = function() {
+      $http({
+          method: "GET",
+          url: current_url + "/api/SanPham/get-all",
+      })
+      .then(function(response) {
+          var products = response.data;
 
-}
+          
+          $scope.listdetailMap = {};
+          for (var i = 0; i < $scope.list.length; i++) {
+              var currentProduct = $scope.list[i].maSanPham;
+              var matchingProduct = products.find(function(product) {
+                  return product.maSanPham === currentProduct;
+              });
 
+              if (matchingProduct) {
+                  // Create an array for each unique maSanPham
+                  if (!$scope.listdetailMap[currentProduct]) {
+                      $scope.listdetailMap[currentProduct] = [];
+                  }
+
+                  $scope.listdetailMap[currentProduct].push({
+                      maSanPham: matchingProduct.maSanPham,
+                      tenSanPham: matchingProduct.tenSanPham
+                  });
+              }
+          }
+      });
+    };
+    $scope.Detail();
+
+  }
+  // in hóa đơn
+  $scope.preparePrintData = function () {
+    // Set variables for the printing section
+    $scope.tenkh1 = $scope.tenkh;
+    $scope.sodt1 = $scope.sodt;
+    $scope.diachi1 = $scope.diachi;
+    // ... set other variables as needed ...
+
+    // Open the print dialog
+    // window.print();
+  };
+ 
     // thêm hóa đơn bán
     $scope.them = function(){
         $scope.Total();
@@ -249,4 +298,61 @@ $scope.load = function(selectedItem){
 
   // thống kê hóa đơn hiên jtiaj 
  
+
+  $scope.printInvoice = function() {
+    // Create a new window or tab for printing
+    var printWindow = window.open('', '_blank');
+    
+    // Build the HTML content dynamically
+    var invoiceContent = `
+        <html>
+            <head>
+                <style>
+                    /* Add your styles here */
+                </style>
+            </head>
+            <body ng-app="AppBanHoa" ng-controller="BillOut" onload="window.print()">
+                <!-- Your existing HTML content -->
+                <!-- ... -->
+
+                <table>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                    </tr>`;
+    
+    // Add rows dynamically based on the data
+    for (var i = 0; i < $scope.list.length; i++) {
+        invoiceContent += `
+            <tr>
+                <td>${i + 1}</td>
+                <td>${$scope.listdetailMap[$scope.list[i].maSanPham][0].tenSanPham}</td>
+                <td>${$scope.list[i].soLuong}</td>
+                <td>${$scope.list[i].thanhTien}</td>
+            </tr>`;
+    }
+    
+    // Add the total row
+    invoiceContent += `
+            <tr>
+                <td colspan="3" class="dam">Tổng</td>
+                <td class="dam"><label id="tien">${$scope.tongtien}</label></td>
+            </tr>
+        </table>
+
+        <div class="doi dam ky">Người mua hàng</div>
+        <div class="doi dam ky">Người bán hàng</div>
+        <div class="doi ky1">(Ký, ghi rõ họ tên)</div>
+        <div class="doi ky1">(Ký, ghi rõ họ tên)</div>
+    </body>
+</html>`;
+
+    // Write the HTML content to the new window
+    printWindow.document.write(invoiceContent);
+
+    // Close the document writing
+    printWindow.document.close();
+};
 })

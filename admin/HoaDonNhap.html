@@ -115,7 +115,7 @@
                                     <thead>
                                         <tr>
                                             <th>Mã sản phẩm</th>
-                                            <!-- <th>Tên sản phẩm</th> -->
+                                            <th>Tên sản phẩm</th>
                                             <th>Số lượng</th>
                                             <th>Đơn giá</th>
                                             <th>Thao tác</th>
@@ -130,6 +130,11 @@
                                         </tr>
                                         <tr ng-repeat="x in list">
                                             <td><input type="text" ng-model="x.maSanPham" placeholder="Mã sản phẩm..."></td>
+                                            <td>
+                                                <span ng-repeat="detail in listdetailMap[x.maSanPham]">
+                                                    <input type="text" ng-model="detail.tenSanPham" placeholder="Tên sản phẩm...">
+                                                </span>
+                                            </td>
                                             <td><input type="number" ng-model="x.soLuong" placeholder="Số lượng..."></td>
                                             <td><input type="number" ng-model="x.giaNhap" placeholder="Đơn giá..."></td>
                                             <td>

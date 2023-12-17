@@ -63,7 +63,7 @@
                 </ul>
             </div>
             <div class="col-11 col-s-12 content">
-                <div class="col-4 col-s-12 content">
+                <div class="col-5 col-s-12 content">
                     <div class="tabcontent">
                         <div class="title">
                             <i class="fas fa-shopping-cart"></i> Nhập thông tin hóa đơn bán
@@ -82,12 +82,7 @@
                                 </div>
                                 <div class="col-12 col-s-12 padding-box">
                                     <input ng-model="tenkh" type="text" id="khachhang" list="listKhachHang">
-                                    <!-- <datalist id="listKhachHang">
-                                        <option value="Nguyễn Văn Anh">
-                                        <option value="Nguyễn Thu Thủy">
-                                        <option value="Phạm Ngọc Mai">
-                                        <option value="Chu Minh Tuyết">
-                                    </datalist> -->
+                                   
                                 </div>
                                 <div class="col-12 col-s-12 padding-box">
                                     <label for="txtright">Số điện thoại:</label>
@@ -137,7 +132,7 @@
                                 <thead>
                                     <tr>
                                         <th>Mã sản phẩm</th>
-                                        <!-- <th>Tên sản phẩm</th> -->
+                                        <th>Tên sản phẩm</th>
                                         <th>Số lượng</th>
                                         <th>Đơn giá</th>
                                         <th>Thao tác</th>
@@ -146,12 +141,22 @@
                                 <tbody id="DSSanPham">
                                     <tr ng-repeat="product in products">
                                         <td><input type="text" ng-model="product.maSanPham" placeholder="Mã sản phẩm..."></td>
+                                        <td>
+                                            <span ng-repeat="detail in listdetailMap[product.maSanPham]">
+                                                <input type="text" ng-model="detail.tenSanPham" placeholder="Tên sản phẩm...">
+                                            </span>
+                                        </td>
                                         <td><input type="number" ng-model="product.soLuong" placeholder="Số lượng..."></td>
                                         <td><input type="number" ng-model="product.gia" placeholder="Đơn giá..."></td>
                                         <td><button ng-click="removeProduct($index)"><i class="fas fa-trash"></i></button></td>
                                     </tr>
                                     <tr ng-repeat="x in list">
                                         <td><input type="text" ng-model="x.maSanPham" placeholder="Mã sản phẩm..."></td>
+                                        <td>
+                                            <span ng-repeat="detail in listdetailMap[x.maSanPham]">
+                                                <input type="text" ng-model="detail.tenSanPham" placeholder="Tên sản phẩm...">
+                                            </span>
+                                        </td>
                                         <td><input type="number" ng-model="x.soLuong" placeholder="Số lượng..."></td>
                                         <td><input type="number" ng-model="x.gia" placeholder="Đơn giá..."></td>
                                         <td>
@@ -171,12 +176,13 @@
                         <button class="btn-form" style="background-color: rgba(44, 140, 15, 0.8);"
                             ng-click="them()">Thêm hóa đơn bán</button>
                         <button class="btn-form" style="background-color: rgba(227, 32, 21, 0.8);"
-                            onclick="NhapMoi()">Nhập mới</button>
-                        <button class="btn-form" style="background-color: rgba(227, 32, 21, 0.8);"
-                            >   <a href="./In.html">In hóa đơn</a></button>
+                            ng-click="NhapMoi()">Nhập mới</button>
+                            <!-- <button ng-click="preparePrintData()"class="btn-form" style="background-color: rgba(227, 32, 21, 0.8);">
+                                <a href="./In.html">In hóa đơn</a>
+                             </button> -->
                     </div>
                 </div>
-                <div class="col-8 col-s-12 content">
+                <div class="col-7 col-s-12 content">
                     <div class="tabcontent">
                         <div class="title">
                             <i class="fas fa-shopping-cart"></i> Danh sách hóa đơn bán
@@ -224,6 +230,7 @@
                                             <td >
                                                 <i ng-click="sua()" class="fas fa-edit" title="Sửa"></i>
                                                 <i ng-click="xoa()" class="fas fa-trash-alt" title="Xóa"></i>
+                                                
                                             </td>
                                         </tr>
                                     </tbody>

@@ -140,47 +140,6 @@ app.controller("thongke", function ($scope, $http) {
       $scope.GetDate();
 
 
-      // thống kê hóa đơn bán
-      // ngày bất kỳ
-      // $scope.GetDateBan = function () {
-      //   var data ={
-      //       fr_NgayTao : new Date($scope.searchbanfr),
-      //       to_NgayTao: new Date($scope.searchbanto)
-      
-      //   }
-      
-      //   console.log(data)
-      //   $http({
-      //     method: "POST",
-      //     url:  "https://localhost:7261/api/ThongKe/thống kê hóa đơn bán",
-      //     data: JSON.stringify(data)
-      //   }).then(function (response) {
-      //     $scope.thongke=[]
-      //     $scope.numberbill = 0;
-      //     $scope.totalAmount=0;
-      //     $scope.productsSold=0;
-      //     $scope.falseStatusCount=0;
-      //     $scope.thongke = response.data.data;
-      //     console.log($scope.thongke)
-      //     updatePagination($scope.thongke)
-          
-      //     for (var i = 0; i < $scope.thongke.length; i++) {
-      //       var currentElement = $scope.thongke[i];
-      //       $scope.numberbill++;
-      //       $scope.totalAmount += currentElement.tongTien;
-           
-      //       for (var j = 0; j < currentElement.list_json_chitiethoadon.length; j++) {
-      //         $scope.productsSold += currentElement.list_json_chitiethoadon[j].soLuong;
-      //       }
-      
-            
-      //       if (!currentElement.trangThai) {
-      //         $scope.falseStatusCount++;
-      //       }
-      //     }
-          
-      //   });
-      // };
 });
 
 app.controller("thongkehdb", function ($scope, $http) {

@@ -1,7 +1,9 @@
+
+
+
 <html>
 
 <head>
-    
     <style>
         * {
             margin: 0;
@@ -90,41 +92,38 @@
     <div class="le">Địa chỉ: 195 Nguyễn Chế Nghĩa, Gia Lộc, Hải Dương</div>
     <div class="le doi">Điện thoại: 0948.098.195</div>
     <div class="le doi">Số tài khoản: 762618652671614</div>
-    <div class="le dam">Người mua hàng: {{tenkh}}</div>
-    <div class="le">Điện thoại: {{sodt}}</div>
-    <div class="le">Địa chỉ: {{diachi}}</div>
+    <div class="le dam">Người mua hàng: {{ tenkh1 }}</div>
+    <div class="le">Email: abc@mail.com</div>
+    <div class="le">Điện thoại: {{ sodt1 }}</div>
+    <div class="le">Địa chỉ: {{ diachi1 }}</div>
     <div class="le doi">Hình thức thanh toán: Tiền mặt / Chuyển khoản</div>
     <div class="le doi">Số tài khoản: 526716147626186</div>
     <div class="le">Ghi chú: </div>
     <table>
         <tr>
-            <th>Mã sản phẩm</th>
+            <th>STT</th>
             <th>Tên sản phẩm</th>
             <th>Số lượng</th>
             <th>Thành tiền</th>
         </tr>
-        <tr ng-repeat="x in list">
-            <td ng-model="x.maSanPham"></td>
-            <td>Mắt hàng 1</td>
-            <td  ng-model="x.soLuong"></td>
-            <td ng-model="x.gia"></td>
+        <tr ng-repeat="item in list">
+            <td>{{ $index + 1 }}</td>
+            <td>{{ listdetailMap[item.maSanPham][0].tenSanPham }}</td>
+            <td>{{ item.soLuong }}</td>
+            <td>{{ item.gia }}</td>
         </tr>
-       
         <tr>
-            <td></td>
-            <td class="dam">Tổng</td>
-            <td class="dam">2</td>
-            <td class="dam"><label id="tien">{{tongtien}}</label></td>
+            <td colspan="3" class="dam">Tổng</td>
+            <td class="dam"><label id="tien">{{ tongtien }}</label></td>
         </tr>
     </table>
+
     <div class="doi dam ky">Người mua hàng</div>
     <div class="doi dam ky">Người bán hàng</div>
     <div class="doi ky1">(Ký, ghi rõ họ tên)</div>
     <div class="doi ky1">(Ký, ghi rõ họ tên)</div>
-	
 </body>
 <script src="/Javascrip/angular.min.js"></script>
 <script src="/Javascrip/global.js"></script>
 <script src="/js/BillOut.js"></script>
-
 </html>

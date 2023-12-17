@@ -113,6 +113,37 @@ app.controller("Bill", function ($scope, $http) {
       $scope.list[i]= selectedItem.list_json_chitiethoadonnhap[i]
       // $scope.products[i]= selectedItem.list_json_chitiethoadonnhap[i]
     }
+    $scope.Detail = function() {
+      $http({
+          method: "GET",
+          url: current_url + "/api/SanPham/get-all",
+      })
+      .then(function(response) {
+          var products = response.data;
+
+          // Organize details by maSanPham
+          $scope.listdetailMap = {};
+          for (var i = 0; i < $scope.list.length; i++) {
+              var currentProduct = $scope.list[i].maSanPham;
+              var matchingProduct = products.find(function(product) {
+                  return product.maSanPham === currentProduct;
+              });
+
+              if (matchingProduct) {
+                  // Create an array for each unique maSanPham
+                  if (!$scope.listdetailMap[currentProduct]) {
+                      $scope.listdetailMap[currentProduct] = [];
+                  }
+
+                  $scope.listdetailMap[currentProduct].push({
+                      maSanPham: matchingProduct.maSanPham,
+                      tenSanPham: matchingProduct.tenSanPham
+                  });
+              }
+          }
+      });
+    };
+    $scope.Detail();
 }
 
 // hàm xóa sản phẩm nhập
